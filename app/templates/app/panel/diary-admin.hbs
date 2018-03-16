@@ -1,0 +1,106 @@
+<div class="page-panel_diaries-admin_diary">
+
+	{{ main-panel-header
+	  topText="Dzienniki"
+	  secondText=secondText
+	}}
+
+
+	<div class="page-panel_inner">
+
+
+		<div class="page-panel_diaries-admin_diary_wrapper {{if model.diary.isLoading 'a-container-loading' }}">
+
+			<div class="page-panel_diaries-admin_diary_header">
+
+				{{#link-to "app.panel.student" model.diary.user.id classNames="page-panel_diaries-admin_diary_header_photo" }}
+					<span style={{ h-safe-string "background-image: url('{photo}');" photo=model.photo.value }}>
+						{{#unless model.photo.isLoading }}
+						{{#unless model.photo.value }}
+							<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_user"></use></svg>
+						{{/unless}}
+						{{/unless}}
+					</span>
+				{{/link-to}}
+
+				{{#link-to "app.panel.student" model.diary.user.id }}
+					{{ model.diary.user.first_name }} {{ model.diary.user.last_name }}
+				{{/link-to}}
+
+				<p>{{ model.diary.titleText }}</p>
+
+				{{#unless (compare model.diary.created_at model.diary.updated_at) }}
+					<p class="ui-tooltip_wrapper ui-tooltip_wrapper--right">
+						<svg class="svg_edit color_text_orange"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_edit"></use></svg>
+						{{ ui-tooltip text=(t model.diary.editedText) }}
+					</p>
+				{{/unless}}
+
+			</div>
+
+
+			<div class="page-panel_diaries-admin_diary_review {{if model.diary.isReviewing '--active' }} {{if model.diary.is_correct '--correct' }} {{if model.diary.notCorrect '--not-correct' }}" {{ action "openReviewMode" }}>
+
+				<span class="main-title">Recenzcja</span>
+
+				{{#unless model.diary.isReviewing }}
+
+					{{#if model.diary.is_correct }}
+
+						{{#if model.diary.review_details.length }}
+							<p>{{ model.diary.review_details }}</p>
+						{{else}}
+							<p>Brak komentarza</p>
+						{{/if}}
+
+					{{else}}
+
+						{{#if model.diary.review_details.length }}
+							<p>{{ model.diary.review_details }} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_edit"></use></svg></p>
+						{{else}}
+							<p>Napisz recenzję <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_edit"></use></svg></p>
+						{{/if}}
+
+					{{/if}}
+
+				{{else}}
+
+					<div class="page-panel_diaries-admin_diary_review_controlls">
+						{{ textarea classNames="input" value=reviewDetails placeholder="Dodaj komentarz" }}
+						<div class="main-editable-fields-buttons">
+							<button {{ action "review" true }}>{{#if model.diary.isLoadingReviewCorrect }} <svg class="svg_loader"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_loader"></use></svg> {{else}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg> {{/if}}</button>
+		  				<button {{ action "review" false }}>{{#if model.diary.isLoadingReviewNotCorrect }} <svg class="svg_loader"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_loader"></use></svg> {{else}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg> {{/if}}</button>
+						</div>
+					</div>
+
+				{{/unless}}
+
+			</div>
+
+
+			{{ panel-diary-admin-display name="Ilość ćwiczeń rozluźniających" value=model.diary.meditation_count }}
+
+			{{ panel-diary-admin-display name="Ilość wizualizacji" value=model.diary.visualisation_count }}
+
+			{{ panel-diary-admin-display name="Ilość ćwiczeń kotwicy" value=model.diary.anchor_count }}
+
+			{{ panel-diary-admin-display name="Czy używałeś starej mowy?" list=oldSpeechUsageApi }}
+
+			{{ panel-diary-admin-display name="Samopoczucie" list=talkFeelingsApi }}
+
+			{{ panel-diary-admin-display name="Kontakty" list=diarySuccessParticipantsApi }}
+
+			{{ panel-diary-admin-display name="Kontakty bez nagrania" list=talkParticipantsWithoutRecordApi }}
+
+			{{ panel-diary-admin-display name="Telefony bez nagrania" list=phoneCallParticipantsWithoutRecordApi }}
+
+			{{#if model.diary.notes }}
+				{{ panel-diary-admin-display name="Opis dnia" value=model.diary.notes }}
+			{{/if}}
+
+		</div>
+
+
+	</div>
+
+</div>

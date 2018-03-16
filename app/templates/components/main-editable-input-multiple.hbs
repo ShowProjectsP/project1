@@ -1,0 +1,59 @@
+{{#if editing }}
+	
+	<span class="main-title">{{ editableInputMultipleApi.name }}</span>
+
+	<div class="main-editable-fields-buttons">
+		<button {{ action "cancel" value bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></button>
+	</div>
+
+	{{#if editableInputMultipleApi.values.length }}
+
+		{{#each editableValues as |value| }}
+			<div class="main-editable-input-multiple_editable">
+				
+				{{ input classNames="input" value=value.name }}
+
+				<div class="main-editable-fields-buttons">
+				  <button {{ action "save" value bubbles=false }}> {{#if value.isLoading }} <svg class="svg_loader"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_loader"></use></svg> {{else}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg> {{/if}} </button>
+				  <button {{ action "delete" value bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></button>
+				</div>
+			</div>
+		{{/each}}
+
+	{{/if}}
+
+
+	<div class="main-editable-input-multiple_editable">
+			
+		{{ input classNames="input" value=editableNewItemValue placeholder=editableInputMultipleApi.newItemPlaceholder }}
+
+		<div class="main-editable-fields-buttons">
+		  <button {{ action "addNewItem" editableNewItemValue bubbles=false }}> {{#if editableInputMultipleApi.newItem.isLoading }} <svg class="svg_loader"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_loader"></use></svg> {{else}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_plus"></use></svg> {{/if}} </button>
+		</div>
+
+	</div>
+
+
+{{else}}
+	
+	<span class="main-title">{{ editableInputMultipleApi.name }}</span>
+
+	<div class="main-editable-input-multiple_display">
+		{{#if editableInputMultipleApi.values.length }}
+
+			<ul>
+				{{#each editableInputMultipleApi.values as |value| }}
+					<li>{{ value.name }}</li>
+				{{/each}}
+			</ul>
+
+		{{else}}
+
+			<i>Wprowadź</i>
+
+		{{/if}}
+
+		<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_edit"></use></svg>
+	</div>
+
+{{/if}}

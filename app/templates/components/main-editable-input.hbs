@@ -1,0 +1,42 @@
+{{#if editing }}
+	
+	<span class="main-title">{{ editableInputApi.name }}</span>
+
+	<div class="main-editable-input_editable">
+
+		{{#unless editableInputApi.textareaInput }}
+
+			{{ input classNames="input" classNameBindings="inputError:input-error" value=editableValue placeholder=editableInputApi.placeholder }}
+
+		{{else}}
+
+			{{ textarea classNames="input" classNameBindings="inputError:input-error" value=editableValue placeholder=editableInputApi.placeholder }}
+
+		{{/unless}}
+
+		<div class="main-editable-fields-buttons">
+		  <button {{ action "save" bubbles=false }}> {{#if loading }} <svg class="svg_loader"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_loader"></use></svg> {{else}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg> {{/if}} </button>
+		  <button {{ action "cancel" bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></button>
+		</div>
+
+	</div>
+
+{{else}}
+	
+	<span class="main-title">{{ editableInputApi.name }}</span>
+
+	<div class="main-editable-input_display">
+		{{#if editableInputApi.value }}
+
+			{{ editableInputApi.value }}
+
+		{{else}}
+
+			<i>Wprowadź</i>
+
+		{{/if}}
+
+		<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_edit"></use></svg>
+	</div>
+
+{{/if}}

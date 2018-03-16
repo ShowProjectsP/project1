@@ -1,0 +1,32 @@
+{{ main-panel-header
+  topText="Kursanci"
+}}
+
+
+<div class="page-panel_inner {{if model.isLoading 'a-container-loading' }}">
+
+
+  {{#each model.collection as |student| }}
+
+    {{#link-to "app.panel.student" student.id classNames="main-panel-list-element" }}
+      <span>{{ student.first_name }} {{ student.last_name }}</span>
+      <span>{{ h-moment student.created_at "LL" }}</span>
+      <span>{{ student.email }}</span>
+      <span>{{ student.phone }}</span>
+    {{/link-to }}
+
+  {{/each}}
+
+
+</div>
+
+
+{{#if model.collection.length }}
+
+  {{ panel-pagination
+    pagesCount=model.pagesCount
+    currentPage=model.page
+    route="app.panel.students"
+  }}
+
+{{/if}}

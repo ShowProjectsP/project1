@@ -1,0 +1,41 @@
+.input {
+  width: 100%;
+  margin: 0;
+  padding: 14px 19px;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid $color-border-2;
+  border-radius: $c-border-radius;
+  color: $grey-1;
+  transition: $c-transition;
+  resize: none;
+
+  @include m-input-placeholder {
+    color: $grey-3;
+  };
+
+  &:focus {
+    border: 1px solid $orange;
+  }
+}
+
+.input-shadow {
+  box-shadow: 0 0 10px 0 $color-border-2;
+}
+
+.input-error {
+  border: 1px solid transparent;
+  box-shadow: 0 0 10px 0 $red;
+
+  &:focus {
+    border: 1px solid $red;
+  }
+}
+
+.input-reset {
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  resize: none;
+}

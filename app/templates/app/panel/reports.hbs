@@ -1,0 +1,107 @@
+<div class="page-panel_diagnosis page-panel_reports">
+
+	{{ main-panel-header
+	  topText=topText
+	  secondText=secondText
+	}}
+
+
+	<div class="page-panel_inner">
+
+		{{#unless model.reports.report }}
+
+			<div class="page-panel_groups_new-group">
+
+				<div class="page-panel_groups_new-group_part">
+					<span class="page-panel_groups_new-group_header">Utwórz raport</span>
+
+					<div class="page-panel_groups_new-group_part_inputs">
+						{{ input classNames="input" classNameBindings="dateFromValidation:input-error" value=model.dateFrom placeholder="Data od (DD-MM-RRRR)" autofocus="autofocus" }}
+						{{ input classNames="input" classNameBindings="dateToValidation:input-error" value=model.dateTo placeholder="Data do (DD-MM-RRRR)" }}
+					</div>
+
+					{{ ui-select-menu selectMenuApi=studentsSelectApi selectOutside=true onLoadMore=( action "loadMoreStudents") }}
+
+					<div class="page-panel_groups_new-group_part_buttons">
+						<button class="button button-wide button-filled color-bg_orange {{if model.reports.isLoading "a-button-loading" }}" disabled={{ createReportDisabled }} {{ action "createReport" }}>Utwórz</button>
+					</div>
+				</div>
+
+				<div class="page-panel_groups_new-group_part">
+					<div class="page-panel_groups_selected-students {{if studentsSelectApi.selected.length "page-panel_groups_selected-students--selected" }}">
+						{{#if selectedStudents.length }}
+							{{#each selectedStudents as |student| }}
+								<div>
+									{{ student.displayValue }}
+									<svg class="svg_cancel" {{ action "removeStudent" student }}><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg>
+								</div>
+							{{/each}}
+
+							<b>{{ selectedStudents.length }}</b>
+						{{ else }}
+							<i>Kursanci...</i>
+						{{/if}}
+					</div>
+				</div>
+
+			</div>
+
+		{{else}}
+
+			<div class="page-panel_reports_report">
+
+				<div class="page-panel_reports_report_header">
+
+					<div class="page-panel_reports_report_header_info">
+						<span class="main-title">Data</span>
+						<p>{{ model.dateFrom }} - {{ model.dateTo }} </p>
+					</div>
+
+					<button class="button button-wide button-filled color-bg_orange" {{ action "downloadRaportPdf" }}>Pobierz raport</button>
+				</div>
+
+				<span class="main-title">Kursanci</span>
+
+				{{#each model.reports.report as |student| }}
+
+					<div class="page-panel_reports_report_student">
+
+						<div class="page-panel_reports_report_student_name">
+							{{ student.name }}
+						</div>
+
+						<div class="page-panel_reports_report_student_table">
+
+							<div class="page-panel_reports_report_student_table_row">
+								<span>Miesiąc</span>
+								<span>Wszystkie dzienniki</span>
+								<span>Poprawne dzienniki</span>
+								<span>Wszystkie nagrania</span>
+								<span>Poprawne nagrania</span>
+								<span>Wymagane nagrania</span>
+							</div>
+
+							{{#each student.results_for_month as |result| }}
+								<div class="page-panel_reports_report_student_table_row">
+									<span>{{ result.month }}</span>
+									<span>{{ result.all_diaries }}</span>
+									<span>{{ result.correct_diaries }}</span>
+									<span>{{ result.all_records }}</span>
+									<span>{{ result.correct_records }}</span>
+									<span>{{ result.required_records }}</span>
+								</div>
+							{{/each}}
+
+						</div>
+					
+					</div>
+
+				{{/each}}
+
+			</div>
+
+		{{/unless}}
+
+	</div>
+
+</div>

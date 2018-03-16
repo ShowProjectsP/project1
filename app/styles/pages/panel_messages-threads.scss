@@ -1,0 +1,122 @@
+.page-panel_messages-threads {
+	height: 100%;
+
+	.page-panel_messages-threads_inner {
+		height: calc(100% - 100px);
+		min-height: 400px;
+    max-height: 800px;
+		display: flex;
+		flex-flow: row;
+	}
+
+	.page-panel_messages-threads_threads-wrapper {
+		width: 100%;
+		max-width: 25%;
+		display: flex;
+		flex-flow: column;
+	}
+
+	.page-panel_messages-threads_actions {
+		height: 29px;
+		min-height: 29px;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 25px;
+
+		input {
+			width: auto;
+			padding: 7px 9px 7px 9px;
+			font-size: 14px;
+			border-color: $grey-2;
+
+			&:focus {
+				background-color: #ffffff;
+				border-color: $orange;
+			}
+		}
+	}
+
+	.page-panel_messages-threads_threads {
+		display: flex;
+		flex-flow: column;
+		background-color: #ffffff;
+	  border-radius: $c-border-radius;
+	  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+	  ul {
+	  	max-height: 100%;
+	  	overflow: auto;
+	  }
+
+	  li {
+	  	display: flex;
+	  	align-items: center;
+	  	cursor: pointer;
+	  	transition: $c-transition;
+
+	  	&:only-child {
+	  		border-radius: $c-border-radius;
+	  	}
+
+	  	&:not(:only-child) {
+	  		&:first-of-type {
+		  		border-radius: $c-border-radius $c-border-radius 0 0;
+		  	}
+
+		  	&:last-of-type {
+		  		border-radius: 0 0 $c-border-radius $c-border-radius;
+		  	}
+	  	}
+
+	  	&:not(:last-of-type) {
+	  		border-bottom: 1px solid $grey-2;
+	  	}
+
+	  	&:hover {
+	  		background-color: $orange;
+
+	  		a {
+	  			color: #ffffff;
+	  		}
+	  	}
+
+	  	&.page-panel_messages-threads_thread--selected {
+	  		background-color: $orange;
+
+	  		a {
+					color: #ffffff;
+	  		}
+	  	}
+
+	  	a {
+	  		width: 100%;
+	  		display: flex;
+	  		padding: 10px;
+				font-size: 15px;
+				text-decoration: none;
+	  		color: $grey-1;
+	  		transition: $c-transition;
+	  	}
+
+	  	span {
+	  		min-width: 15px;
+	  		margin: 0 10px 0 auto;
+	  		padding: 5px 4px;
+	  		font-size: 13px;
+	  		text-align: center;
+	  		color: #ffffff;
+	  		background-color: $red;
+	  		border-radius: 100%;
+	  	}
+	  }
+
+	  p {
+	  	margin: 30px auto;
+	  	font-size: 15px;
+	  	font-style: italic;
+	  	text-align: center;
+	  	color: $grey-1;
+	  }
+	}
+
+}

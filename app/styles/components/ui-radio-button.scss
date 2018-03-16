@@ -1,0 +1,45 @@
+.ui-radio-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:not(:first-of-type) {
+    margin-top: 10px;
+  }
+
+  input {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  span {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    position: relative;
+    border-radius: 100%;
+    border: 2px solid $orange;
+
+    &:before {
+      content: '';
+      width: 9px;
+      height: 9px;
+      position: absolute;
+      background-color: transparent;
+      border-radius: 100%;
+      transition: $c-transition;
+    }
+  }
+
+  input:checked + span:before {
+    background-color: $orange;
+  }
+
+  label {
+    line-height: 19px;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,73 @@
+<div class="page-panel_diagnosis">
+
+  {{ main-panel-header
+    topText="Diagnozy"
+    secondText=secondText
+  }}
+
+
+  <div class="page-panel_inner">
+
+
+    <div class="box box--details {{if model.diagnosis.isLoading 'a-container-loading' }}">
+
+      <div class="box-part">
+        {{ main-editable-display name="Imię" value=model.diagnosis.user.first_name }}
+
+        {{ main-editable-display name="Nazwisko" value=model.diagnosis.user.last_name }}
+
+        {{ main-editable-display name="Email" value=model.diagnosis.user.email }}
+
+        {{ main-editable-display name="Telefon" value=model.diagnosis.user.phone }}
+
+        {{ main-editable-display name="Zarejestrowany" value=(h-moment model.diagnosis.user.created_at "LLLL") }}
+
+        {{#if model.diagnosis.user.deleted_at }}
+          {{ main-editable-display name="Usunięty" value=(h-moment model.diagnosis.user.deleted_at "LLLL") }}
+        {{/if}}
+      </div>
+
+      <div class="box-part">
+        {{ main-editable-display name="Cena" value=model.diagnosis.amount }}
+
+        {{#if model.diagnosis.created_at }}
+          {{ main-editable-display name="Utworzona" value=(h-moment model.diagnosis.user.created_at "LLLL") }}
+        {{/if}}
+
+        {{#if model.diagnosis.deleted_at }}
+          {{ main-editable-display name="Usunięta" value=(h-moment model.diagnosis.user.deleted_at "LLLL") }}
+        {{/if}}
+
+        {{ main-editable-display name="ID Płatności" value=model.diagnosis.payment_id }}
+
+        {{ main-editable-display name="Notatki studenta" value=model.diagnosis.notes_from_student }}
+      </div>
+
+    </div>
+
+    <div class="box {{if model.diagnosis.isLoading 'a-container-loading' }}">
+      <div class="box-part">
+        {{ main-editable-select editableSelectApi=editableSelectDiagnosisTypeApi editing=model.diagnosis.editable.diagnosis_type.editing loading=model.diagnosis.editable.diagnosis_type.isLoading onSave=(action "onSave" "diagnosis_type") }}
+      </div>
+    </div>
+
+    <div class="box {{if model.diagnosis.isLoading 'a-container-loading' }}">
+      <div class="box-part">
+        {{ main-editable-input editableInputApi=editableInputNotesFromTrainerApi editing=model.diagnosis.editable.notes_from_trainer.editing loading=model.diagnosis.editable.notes_from_trainer.isLoading onSave=(action "onSave" "notes_from_trainer") }}
+      </div>
+    </div>
+
+    <div class="box {{if model.diagnosis.isLoading 'a-container-loading' }}">
+      <div class="box-part">
+        {{ main-editable-select editableSelectApi=editableSelectIsPaidApi editing=model.diagnosis.editable.is_paid.editing loading=model.diagnosis.editable.is_paid.isLoading onSave=(action "onSave" "is_paid") }}
+      </div>
+
+      <div class="box-part">
+        {{ main-editable-select editableSelectApi=editableSelectIsDoneApi editing=model.diagnosis.editable.is_done.editing loading=model.diagnosis.editable.is_done.isLoading onSave=(action "onSave" "is_done") }}
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

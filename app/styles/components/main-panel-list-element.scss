@@ -1,0 +1,42 @@
+.main-panel-list-element {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  color: $grey-1;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: $c-border-radius;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  transition: $c-transition;
+
+  &:hover {
+    background-color: $orange;
+    color: #fff;
+
+    svg {
+      color: #fff;
+    }
+  }
+
+  &:not(:first-of-type) {
+    margin-top: 10px;
+  }
+
+  span {
+    width: 50%;
+    display: flex;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    margin-left: auto;
+    color: $grey-1;
+    transition: $c-transition;
+  }
+}

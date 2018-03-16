@@ -1,0 +1,70 @@
+<div class="page-panel_diagnosis page-panel_group">
+
+  {{ main-panel-header
+    topText="Grupy"
+    secondText=secondText
+  }}
+
+
+  <div class="page-panel_inner">
+
+   	<div class="box {{if model.group.isLoading 'a-container-loading' }}">      
+      <div class="box-part">
+        {{ main-editable-input editableInputApi=editableInputGroupNameApi editing=model.group.editable.name.editing loading=model.group.editable.name.isLoading onSave=(action "onSave" "name") }}
+
+        {{ main-editable-display name="Utworzona" value=(h-moment model.group.created_at "LLLL") }}
+      </div>
+
+      <div class="box-part">
+        {{ main-editable-select editableSelectApi=editableSelectLanguageApi editing=model.group.editable.language.editing loading=model.group.editable.language.isLoading onSave=(action "onSave" "language") }}
+
+        {{ main-editable-select editableSelectApi=editableSelectTrainerApi editing=model.group.editable.trainer_id.editing loading=model.group.editable.trainer_id.isLoading onSave=(action "onSave" "trainer_id") }}
+      </div>
+    </div>
+
+    {{#main-editable-custom editableCustomApi=editableCustomStudentsApi editing=model.group.editable.student_ids.editing loading=model.group.editable.student_ids.isLoading onSave=(action "onSaveEditableCustomStudents") onCancel=(action "onCancelEditableCustomStudents") }}
+
+      {{ ui-select-menu editValue=editValue selectMenuApi=editableCustomStudentsApi selectOutside=true onLoadMore=(action "loadMoreStudents") }}
+
+      <div class="page-panel_group_selected-students {{if editableCustomStudentsApi.selected.length "page-panel_group_selected-students--selected" }}">
+        {{#if editableCustomStudentsApi.selected.length }}
+          {{#each editableCustomStudentsApi.selected as |student| }}
+            <div>
+              {{ student.displayValue }}
+              <svg class="svg_cancel" {{ action "removeStudent" student }}><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg>
+            </div>
+          {{/each}}
+
+          <b>{{ editableCustomStudentsApi.selected.length }}</b>
+        {{ else }}
+          <i>Kursanci...</i>
+        {{/if}}
+      </div>
+
+    {{/main-editable-custom}}
+
+   	{{#if model.group.students.length }}
+
+   		<span class="main-title">Kursanci</span>
+
+  	  {{#each model.group.students as |student| }}
+
+  	    {{#link-to "app.panel.student" student.id classNames="main-panel-list-element" }}
+  	      <span>{{ student.first_name }} {{ student.last_name }}</span>
+  	      <span>{{ h-moment student.created_at "LL" }}</span>
+  	      <span>{{ student.email }}</span>
+  	      <span>{{ student.phone }}</span>
+          <span><svg {{ action "removeStudentFromGroup" student.id bubbles=false }}><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></span>
+  	    {{/link-to }}
+
+  		{{/each}}
+
+    {{else}}
+
+      <div class="page-panel_group_no-students">Brak kursantów</div>
+
+  	{{/if}}
+
+  </div>
+
+</div>

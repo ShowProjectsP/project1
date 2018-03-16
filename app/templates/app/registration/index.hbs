@@ -1,0 +1,88 @@
+<div class="main-page page-registration">
+
+  <form {{ action "register" on="submit" }}>
+    <h1 class="main-h1-header">{{t "Zarejestruj się" }}</h1>
+
+    {{ input
+      type="text"
+      classNames="input"
+      classNameBindings="model.errors.firstName:input-error"
+      key-up="validateForm"
+      placeholder=(t "Imię*")
+      value=model.params.first_name
+    }}
+
+    {{ input
+      type="text"
+      classNames="input"
+      classNameBindings="model.errors.lastName:input-error"
+      key-up="validateForm"
+      placeholder=(t "Nazwisko*")
+      value=model.params.last_name
+    }}
+
+    {{ input
+      type="text"
+      classNames="input"
+      classNameBindings="model.errors.email:input-error"
+      key-up="validateForm"
+      placeholder=(t "Email*")
+      value=model.params.email
+    }}
+
+    {{ input
+      type="text"
+      classNames="input"
+      classNameBindings="model.errors.phone:input-error"
+      key-up="validateForm"
+      placeholder=(t "Numer telefonu*")
+      value=model.params.phone
+    }}
+
+    {{ input
+      type="password"
+      classNames="input"
+      classNameBindings="model.errors.password:input-error"
+      key-up="validateForm"
+      placeholder=(t "Hasło*")
+      value=model.params.password
+    }}
+
+    {{ input
+      type="password"
+      classNames="input"
+      classNameBindings="model.errors.passwordConfirmation:input-error"
+      key-up="validateForm"
+      placeholder=(t "Potwierdź hasło*")
+      value=model.params.password_confirmation
+    }}
+
+    {{ input
+      type="text"
+      classNames="input"
+      classNameBindings="model.errors.birthdate:input-error"
+      key-up="validateForm"
+      placeholder=(t "Data urodzenia")
+      value=model.params.birthdate
+    }}
+
+    <div class="main-page_form_buttons">
+      <button class="button button-wide button-filled color-bg_orange {{if model.isLoading 'a-button-loading' }}" type="submit">{{t "Zarejestruj" }}</button>
+    </div>
+  </form>
+
+  <div class="main-errors-container">
+    {{#if loginErrors.email }}
+      <span class="color-text_red">{{t "Adres email jest wymagany." }}</span>
+    {{/if}}
+
+    {{#if loginErrors.password }}
+      <span class="color-text_red">{{t "Hasło jest wymagane." }}</span>
+    {{/if}}
+
+    {{#if loginErrors.login }}
+      <span class="color-text_red">{{t "Niepoprawny login lub hasło!" }}</span>
+    {{/if}}
+  </div>
+
+</div>

@@ -1,0 +1,85 @@
+.main-editable-input-multiple {
+	width: 100%;
+	display: flex;
+  flex-flow: column;
+  padding: 15px 15px;
+  position: relative;
+  transition: $c-transition;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: $c-border-radius;
+
+  &:not(.main-editable-input-multiple--editing) {
+  	cursor: pointer;
+  }
+
+  &:hover, &.main-editable-input-multiple--editing {
+    &:before {
+      opacity: 1;
+    }
+  }
+
+  &:before {
+    content: '';
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    transition: $c-transition;
+    opacity: 0;
+    background-color: $orange;
+  }
+
+  .main-editable-input-multiple_editable {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    &:not(:last-of-type) {
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 7px 68px 7px 9px;
+      font-size: 15px;
+    }
+  }
+
+  .main-editable-input-multiple_display {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: $grey-1;
+
+    li {
+      font-size: 15px;
+
+      &:not(:last-of-type) {
+        margin-bottom: 5px;
+      }
+
+      &:first-letter {
+        text-transform: uppercase;
+      }
+    }
+
+    svg {
+      width: 10px;
+      height: 10px;
+      margin-left: 10px;
+      color: $grey-1;
+    }
+  }
+
+  .main-editable-fields-buttons {
+    top: 0;
+    right: 0px;
+    position: absolute;
+  }
+
+  .main-title + .main-editable-fields-buttons {
+    margin: 0 0 5px auto;
+    position: relative;
+  }
+}

@@ -1,0 +1,11 @@
+<span class="main-title">{{ name }}</span>
+
+{{#if large }}
+
+	{{ textarea classNames="input" value=value focus-out="focusOut" }}
+
+{{else}}
+
+	{{ input classNames="input-reset" value=value focus-out="focusOut" }}
+
+{{/if}}

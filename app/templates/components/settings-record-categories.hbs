@@ -1,0 +1,20 @@
+{{#if editing }}
+
+	<span class="main-title">{{ api.name }}</span>
+
+	<div class="main-editable-fields-buttons">
+		<button {{ action "cancel" value bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></button>
+	</div>
+
+{{else}}
+
+	<span class="main-title">{{ api.name }}</span>
+
+
+{{/if}}
+
+<button {{ action "open" }}>open</button>
+
+{{#if dialogOpened }}
+	{{ settings-record-categories-dialog dialogOpened=dialogOpened }}
+{{/if}}

@@ -1,0 +1,78 @@
+.page-panel_group {
+
+  .main-editable-custom {
+    margin: 20px 0;
+
+    .ui-select-menu {
+      min-width: 25%;
+    }
+  }
+
+  .page-panel_group_selected-students {
+    width: 50%;
+    padding: 7px 25px 2px 9px;
+    margin: 0 auto 0 20px;
+    position: relative;
+    font-size: 15px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid $color-border-2;
+    border-radius: $c-border-radius;
+    color: $grey-1;
+    transition: $c-transition;
+
+    &.page-panel_group_selected-students--selected {
+      min-height: 70px;
+    }
+
+    div {
+      display: inline-block;
+      margin: 0 5px 5px 0;
+      padding: 5px;
+      font-size: 14px;
+      color: #ffffff;
+      box-sizing: border-box;
+      background-color: $orange;
+      border-radius: $c-border-radius;
+
+      svg {
+        width: 10px;
+        height: 10px;
+        margin-left: 5px;
+        cursor: pointer;
+      }
+    }
+
+    i {
+      display: inline-block;
+      margin: 2px 0 6px 0;
+      font-style: normal;
+    }
+
+    b {
+      top: 7px;
+      right: 9px;
+      position: absolute;
+      font-size: 13px;
+      font-weight: 400;
+      color: $grey-3;
+    }
+  }
+
+  .page-panel_group_no-students {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    color: $grey-1;
+    background-color: #ffffff;
+    border-radius: $c-border-radius;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: $c-transition;
+  }
+
+}

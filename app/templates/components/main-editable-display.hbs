@@ -1,0 +1,25 @@
+<span class="main-title">{{ name }}</span>
+
+{{#if value.link }}
+	
+	{{#if value.link.id}}
+
+		{{#link-to value.link.href value.link.id }}
+			{{ value.link.name }}
+		{{/link-to}}
+
+	{{else}}
+
+		<a href="{{ value.link.href }}" class="{{if value.link.isItalic 'h-font-style-italic' }}">{{ value.link.name }}</a>
+
+	{{/if}}
+	
+{{else if value }}
+
+	<p>{{ value }}</p>
+
+{{else}}
+
+	<i>Brak</i>
+
+{{/if}}

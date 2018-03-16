@@ -1,0 +1,67 @@
+.page-panel_student {
+
+  .box {
+    min-height: 65px;
+
+    &.box--history.a-container-loading {
+      min-height: 130px;
+    }
+  }
+
+  .box-photo {
+    width: 100%;
+    max-width: 130px;
+    min-height: 100%;
+    margin-right: 20px;
+    position: relative;
+    transition: $c-transition;
+    background-size: cover;
+    background-position: center;
+    border-right: 1px solid $color-border-1;
+    border-radius: $c-border-radius 0 0 $c-border-radius;
+
+    &:not(.a-container-loading):hover {
+      .box-photo_edit {
+        display: flex;
+      }
+    }
+
+    .box-photo_edit {
+      width: 100%;
+      height: 100%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      cursor: pointer;
+      background-color: transparentize($orange, 0.2);
+      border-radius: $c-border-radius 0 0 $c-border-radius;
+
+      input {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        position: absolute;
+        cursor: pointer;
+      }
+
+      svg {
+        width: 24px;
+        height: 24px;
+        color: #ffffff;
+      }
+    }
+
+    .box-photo_text {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      font-size: 14px;
+      font-style: italic;
+    }
+  }
+
+}

@@ -1,0 +1,29 @@
+<div class="panel-diagnosis-box-editable_content">
+
+  <span class="panel-diagnosis-box-editable_content_header">{{ header }}</span>
+
+  {{#if editing }}
+
+    <div class="panel-diagnosis-box-editable_content_inner">
+      {{ yield }}
+    </div>
+
+  {{else}}
+
+    <p class="panel-diagnosis-box-editable_content_text {{ statementFalseClassNames }}">{{ statementText }}</p>
+
+  {{/if}}
+
+</div>
+
+
+{{#if editing }}
+  <div class="panel-diagnosis-box-editable_edit-buttons">
+    <div class="{{if loading "a-button-loading" }}" {{ action "onSave" }}><svg class="svg_ok"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg></div>
+    <div {{ action "onClose" bubbles=false }}><svg class="svg_cancel"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></div>
+  </div>
+{{else}}
+  <div class="panel-diagnosis-box-editable_edit">
+    <svg class="svg_edit"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_edit"></use></svg>
+  </div>
+{{/if}}

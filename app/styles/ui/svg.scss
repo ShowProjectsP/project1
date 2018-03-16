@@ -1,0 +1,113 @@
+.svg_article {
+  width: 20px;
+  height: 20px;
+}
+
+.svg_microphone {
+  width: 20px;
+  height: 20px;
+}
+
+.svg_home {
+  width: 22px;
+  height: 22px;
+}
+
+.svg_settings {
+  width: 20px;
+  height: 20px;
+}
+
+.svg_envelope {
+  width: 23px;
+  height: 23px;
+}
+
+.svg_user {
+  width: 20px;
+  height: 20px;
+}
+
+.svg_diagnosis {
+  width: 20px;
+  height: 20px;
+}
+
+.svg_students {
+  width: 26px;
+  height: 26px;
+}
+
+.svg_groups {
+  width: 26px;
+  height: 26px;
+}
+
+.svg_reports {
+  width: 22px;
+  height: 22px;
+}
+
+.svg_send {
+  width: 17px;
+  height: 17px;
+}
+
+.svg_save {
+  width: 14px;
+  height: 14px;
+}
+
+.svg_new-message {
+  width: 14px;
+  height: 17px;
+}
+
+.svg_file {
+  width: 20px;
+  height: 20px;
+}
+
+.svg_image {
+  width: 20px;
+  height: 20px;
+}
+
+.svg_audio {
+  width: 20px;
+  height: 20px;
+}
+
+.svg_video {
+  width: 20px;
+  height: 20px;
+}
+
+.svg_edit {
+  width: 12px;
+  height: 12px;
+}
+
+.svg_plus {
+  width: 14px;
+  heighT: 14px;
+}
+
+.svg_loader {
+  animation: svg-loader 0.5s linear infinite;
+
+  @keyframes svg-loader {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.svg_triangle_down {
+  width: 10px;
+  height: 8px;
+}

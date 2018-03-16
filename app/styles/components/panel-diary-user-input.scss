@@ -1,0 +1,50 @@
+.panel-diary-user-input {
+	width: 100%;
+	max-width: 50%;
+	padding: 15px;
+
+	&.panel-diary-user-input--editing, &:hover {
+		box-shadow: inset 2px 0px 0px $orange;
+	}
+
+	&.panel-diary-user-input--editing {
+		max-width: 100%;
+	}
+
+	&:not(.panel-diary-user-input--editing) {
+		cursor: pointer;
+	}
+
+	&.panel-diary-user-input--type-number {
+		input {
+			width: 100%;
+			max-width: 60px;
+		}
+	}
+
+	&.panel-diary-user-input--large {
+		max-width: 100%;
+		box-sizing: border-box;
+	}
+
+	input, textarea {
+		padding: 7px 0;
+		font-size: 15px;
+		transition: $c-transition;
+		border: 1px solid #ffffff;
+		border-bottom-color: $grey-2;
+
+		&:focus {
+			padding: 7px 9px;
+			border-radius: $c-border-radius;
+			border-color: $orange;
+		}
+	}
+
+	textarea {
+		&:focus {
+			min-height: 300px;
+		}
+	}
+
+}

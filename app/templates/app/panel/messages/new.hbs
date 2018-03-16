@@ -1,0 +1,19 @@
+<div class="page-panel_messages_new">
+
+	<div class="page-panel_messages_new_header">
+
+		{{ input class="input-reset" value=model.searchUsersValue placeholder="Wpisz nazwę osoby..." }}
+
+	</div>
+
+
+	<ul class="{{if isLoading 'a-container-loading' }}">
+		{{#each model.users.collection as |user| }}
+
+			<li {{ action "selectUser" user }}>{{ user.first_name }} {{ user.last_name }}</li>
+
+		{{/each}}
+	</ul>
+
+
+</div>

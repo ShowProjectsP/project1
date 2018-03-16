@@ -1,0 +1,116 @@
+<div class="page-panel_diagnosis page-panel_student">
+
+  {{ main-panel-header
+    topText="Kursanci"
+    secondText=secondText
+  }}
+
+
+  <div class="page-panel_inner">
+
+    <div class="box {{if model.student.isLoading 'a-container-loading' }}">
+      <div class="box-photo {{if model.student.photo.isLoading "a-container-loading" }}" style="{{ h-safe-string "background-image: url('{photo}');" photo=model.student.photo.value }}">
+        {{#unless model.student.photo.isLoading }}
+          {{#unless model.student.photo.value }}
+            <span class="box-photo_text">Brak zdjęcia</span>
+          {{/unless}}
+
+          <div class="box-photo_edit">
+            {{ file-upload fileUploadApi=fileUploadApi }}
+            <svg class="svg_edit"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_edit"></use></svg>
+          </div>
+        {{/unless}}
+      </div>
+      
+      <div class="box-part">
+        {{ main-editable-input editableInputApi=editableInputFirstNameApi editing=model.student.editable.first_name.editing loading=model.student.editable.first_name.isLoading onSave=(action "onSave" "first_name") }}
+
+        {{ main-editable-input editableInputApi=editableInputLastNameApi editing=model.student.editable.last_name.editing loading=model.student.editable.last_name.isLoading onSave=(action "onSave" "last_name") }}
+      </div>
+    </div>
+
+    <div class="box {{if model.student.isLoading 'a-container-loading' }}">
+      <div class="box-part">
+        {{ main-editable-input editableInputApi=editableInputBirthdateApi editing=model.student.editable.birthdate.editing loading=model.student.editable.birthdate.isLoading onSave=(action "onSave" "birthdate") }}
+
+        {{ main-editable-input editableInputApi=editableInputEmailApi editing=model.student.editable.email.editing loading=model.student.editable.email.isLoading onSave=(action "onSave" "email") }}
+
+        {{ main-editable-input editableInputApi=editableInputPhoneApi editing=model.student.editable.phone.editing loading=model.student.editable.phone.isLoading onSave=(action "onSave" "phone") }}
+      </div>
+
+      <div class="box-part">
+        {{ main-editable-input editableInputApi=editableInputFacebookProfileApi editing=model.student.editable.facebook_profile.editing loading=model.student.editable.facebook_profile.isLoading onSave=(action "onSave" "facebook_profile") }}
+
+        {{ main-editable-select editableSelectApi=editableSelectLanguageApi editing=model.student.editable.language.editing loading=model.student.editable.language.isLoading onSave=(action "onSave" "language") }}
+
+        {{ main-editable-select editableSelectApi=editableSelectRoleApi editing=model.student.editable.role.editing loading=model.student.editable.role.isLoading onSave=(action "onSave" "role") }}
+      </div>
+    </div>
+
+    <div class="box {{if model.student.isLoading 'a-container-loading' }}">
+      <div class="box-part">
+        {{ main-editable-display name="Zarejestrowany" value=(h-moment model.student.created_at "LLLL") }}
+      </div>
+
+      <div class="box-part">
+        {{ main-editable-display name="Zaktualizowano" value=(h-moment model.student.updated_at "LLLL") }}
+      </div>
+    </div>
+
+    <div class="box {{if model.student.isLoading 'a-container-loading' }}">
+      <div class="box-part">
+        {{ main-editable-input editableInputApi=editableInputTherapyBeginningApi editing=model.student.editable.therapy_beginning.editing loading=model.student.editable.therapy_beginning.isLoading onSave=(action "onSave" "therapy_beginning") }}
+      </div>
+
+      <div class="box-part">
+        {{ main-editable-input editableInputApi=editableInputTherapyEndApi editing=model.student.editable.therapy_end.editing loading=model.student.editable.therapy_end.isLoading onSave=(action "onSave" "therapy_end") }}
+      </div>
+    </div>
+
+    <div class="box {{if model.student.isLoading 'a-container-loading' }}">
+      <div class="box-part">
+        {{ main-editable-display name="Grupa" value=editableDisplayGroupApi }}
+      </div>
+    </div>
+
+    <div class="box {{if model.student.isLoading 'a-container-loading' }}">
+      <div class="box-part">
+        {{ main-editable-input editableInputApi=editableInputPasswordApi editing=model.student.editable.password.editing loading=model.student.editable.password.isLoading onSave=(action "onSave" "password") }}
+      </div>
+    </div>
+
+    <div class="box {{if model.student.isLoading 'a-container-loading' }}">
+      <div class="box-part">
+        {{ main-editable-select editableSelectApi=editableSelectUserPermissionDiariesApi editing=model.student.editable.user_permission.diary_permission.editing loading=model.student.editable.user_permission.diary_permission.isLoading onSave=(action "onSave" "user_permission.diary_permission") }}
+      </div>
+
+      <div class="box-part">
+        {{ main-editable-select editableSelectApi=editableSelectUserPermissionRecordsApi editing=model.student.editable.user_permission.records_permission.editing loading=model.student.editable.user_permission.records_permission.isLoading onSave=(action "onSave" "user_permission.records_permission") }}
+      </div>
+    </div>
+
+    <div class="box box--history {{if model.student.isLoading 'a-container-loading' }}">
+      <div class="box-part">
+        {{ main-editable-input editableInputApi=editableInputMyHistoryApi editing=model.student.editable.my_history.editing loading=model.student.editable.my_history.isLoading onSave=(action "onSave" "my_history") }}
+
+        {{ main-editable-select editableSelectApi=editableSelectMyHistoryPublicApi editing=model.student.editable.my_history_public.editing loading=model.student.editable.my_history_public.isLoading onSave=(action "onSave" "my_history_public") }}
+      </div>
+
+       <div class="box-part">
+        {{ main-editable-input editableInputApi=editableInputMyNowamowaApi editing=model.student.editable.my_nowamowa.editing loading=model.student.editable.my_nowamowa.isLoading onSave=(action "onSave" "my_nowamowa") }}
+
+        {{ main-editable-select editableSelectApi=editableSelectMyNowamowaPublicApi editing=model.student.editable.my_nowamowa_public.editing loading=model.student.editable.my_nowamowa_public.isLoading onSave=(action "onSave" "my_nowamowa_public") }}
+      </div>
+    </div>
+
+    <div class="box {{if model.student.isLoading 'a-container-loading' }}">
+      <div class="box-part">
+        {{ main-editable-input editableInputApi=editableInputTrainerNotesApi editing=model.student.editable.trainer_notes.editing loading=model.student.editable.trainer_notes.isLoading onSave=(action "onSave" "trainer_notes") }}
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>

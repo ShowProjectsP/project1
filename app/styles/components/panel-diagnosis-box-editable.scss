@@ -1,0 +1,108 @@
+.panel-diagnosis-box-editable {
+  display: flex;
+  transition: $c-transition;
+  background-color: #ffffff;
+  border-left: 2px solid $orange;
+  border-radius: $c-border-radius;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+  &:not(:first-of-type) {
+    margin-top: 20px;
+  }
+
+  &.panel-diagnosis-box-editable--editing {
+    border-left: none;
+    cursor: pointer;
+
+    &:hover {
+      .panel-diagnosis-box-editable_edit {
+        color: #ffffff;
+        background-color: $orange;
+      }
+    }
+  }
+
+  .panel-diagnosis-box-editable_content {
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+    padding: 15px;
+
+    .panel-diagnosis-box-editable_content_header {
+      margin-bottom: 5px;
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: $orange;
+    }
+
+    .panel-diagnosis-box-editable_content_inner {
+      margin-top: 10px;
+    }
+
+    .panel-diagnosis-box-editable_content_text {
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      color: $grey-1;
+    }
+
+    textarea {
+      height: 69px;
+      padding: 7px;
+    }
+  }
+
+  .panel-diagnosis-box-editable_edit {
+    width: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    transition: $c-transition;
+    color: $grey-3;
+    border-left: 1px solid $color-border-1;
+    border-radius: 0 $c-border-radius $c-border-radius 0;
+
+    .svg_edit {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .panel-diagnosis-box-editable_edit-buttons {
+    width: 65px;
+    margin-left: auto;
+    transition: $c-transition;
+    color: $grey-3;
+    border-left: 1px solid $color-border-1;
+
+    div {
+      height: 65px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        color: #ffffff;
+        background-color: $orange;
+      }
+
+      &:first-of-type {
+        border-radius: 0 $c-border-radius 0 0;
+      }
+
+      &:last-of-type {
+        border-top: 1px solid $color-border-1;
+        border-radius: 0 0 $c-border-radius 0;
+      }
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+}

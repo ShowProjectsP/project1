@@ -1,0 +1,51 @@
+<span class="main-title">{{ name }}</span>
+
+{{#if editing }}
+	
+	<div class="panel-diary-user-select_editable">
+
+		<ul>
+			{{#each api.values as |value| }}
+
+				{{ ui-checkbox value=value.name name="test" for=value.name checked=value.checked oneSelection=api.oneSelection deselect="deselect" }}
+
+			{{/each}}
+		</ul>
+
+		{{#if api.comment }}
+			{{ textarea classNames="input" value=api.comment.value placeholder=api.comment.placeholder }}
+		{{/if}}
+
+		<div class="main-editable-fields-buttons">
+		  <button {{ action "cancel" bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></button>
+		</div>
+
+	</div>
+
+{{else}}
+	
+	<div class="panel-diary-user-select_display">
+		
+		<ul>
+			{{#each api.values as |value| }}
+				
+				{{#if value.checked }}
+					<li>
+						{{ ui-checkbox value=value.name name=name for=value.name checked=true }}
+					</li>
+				{{/if}}
+				
+			{{/each}}
+		</ul>
+
+		{{#unless isAnyValueSelected }}
+			<span class="panel-diary-user-select_display_edit">Wybierz <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_edit"></use></svg></span>
+		{{/unless}}
+
+		{{#if api.comment.value.length }}
+			<p>{{ api.comment.value }}</p>
+		{{/if}}
+
+	</div>
+
+{{/if}}

@@ -1,0 +1,25 @@
+{{#if editing }}
+	
+	<span class="main-title">{{ editableSelectApi.name }}</span>
+
+	<div class="main-editable-select_editable">
+
+		{{ ui-select-menu selectMenuApi=editableSelectApi }}
+
+		<div class="main-editable-fields-buttons">
+		  <button {{ action "save" bubbles=false }}> {{#if loading }} <svg class="svg_loader"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_loader"></use></svg> {{else}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg> {{/if}} </button>
+		  <button {{ action "cancel" bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></button>
+		</div>
+
+	</div>
+
+{{else}}
+	
+	<span class="main-title">{{ editableSelectApi.name }}</span>
+
+	<div class="main-editable-select_display">
+		{{ selectedValue }}
+		<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_edit"></use></svg>
+	</div>
+
+{{/if}}

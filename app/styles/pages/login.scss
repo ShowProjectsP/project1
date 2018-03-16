@@ -1,0 +1,52 @@
+.page-login, .page-login_forgot-passord, .page-login_reset-passord, .page-registration, .page-registration_diagnosis {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+
+  form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    input:not(:first-of-type) {
+      margin-top: 15px;
+    }
+
+    .main-page_form_buttons {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 20px 0 0 0;
+
+      p {
+        min-height: 40px;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+      }
+
+      a {
+        text-decoration: none;
+        color: $grey-3;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.page-login_forgot-passord, .page-login_reset-passord, .page-registration, .page-registration_diagnosis {
+  form {
+    .main-page_form_buttons {
+      justify-content: center;
+    }
+  }
+}

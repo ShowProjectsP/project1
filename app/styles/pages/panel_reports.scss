@@ -1,0 +1,174 @@
+.page-panel_reports {
+
+	.page-panel_groups_new-group {
+		display: flex;
+		flex-flow: row wrap;
+		padding: 15px 15px 15px 13px;
+		background-color: #ffffff;
+		border-radius: $c-border-radius;
+		box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+		.page-panel_groups_new-group_part {
+			width: 50%;
+			display: flex;
+			flex-flow: column;
+			box-sizing: border-box;
+
+			&:first-of-type {
+				padding-right: 20px;
+			}
+
+			&:last-of-type {
+				padding-left: 20px;
+			}
+
+			.page-panel_groups_new-group_part_inputs {
+				display: flex;
+
+				input:last-of-type {
+					margin-left: 5px;
+				}
+			}
+
+			.page-panel_groups_new-group_part_buttons {
+				margin-top: 15px;
+			}
+		}
+
+		.page-panel_groups_new-group_header {
+			margin-bottom: 5px;
+	    font-size: 15px;
+	    font-weight: 800;
+	    text-transform: uppercase;
+	    color: $orange;
+		}
+
+		input {
+			padding: 7px 68px 7px 9px;
+    	font-size: 15px;
+		}
+
+		.ui-select-menu {
+			margin-top: 5px;
+		}
+
+	}
+
+	.page-panel_groups_selected-students {
+		width: 100%;
+		padding: 7px 25px 2px 9px;
+		margin-top: 20px;
+		position: relative;
+		font-size: 15px;
+		box-sizing: border-box;
+	  outline: none;
+	  border: 1px solid $color-border-2;
+	  border-radius: $c-border-radius;
+	  color: $grey-1;
+	  transition: $c-transition;
+
+	  &.page-panel_groups_selected-students--selected {
+	  	min-height: 70px;
+	  }
+
+	  div {
+	  	display: inline-block;
+	  	margin: 0 5px 5px 0;
+	  	padding: 5px;
+	  	font-size: 14px;
+	  	color: #ffffff;
+	  	box-sizing: border-box;
+	  	background-color: $orange;
+	  	border-radius: $c-border-radius;
+
+	  	svg {
+	  		width: 10px;
+	  		height: 10px;
+	  		margin-left: 5px;
+	  		cursor: pointer;
+	  	}
+	  }
+
+	  i {
+	  	display: inline-block;
+	  	margin: 2px 0 6px 0;
+	  	font-style: normal;
+	  }
+
+	  b {
+	  	top: 7px;
+	  	right: 9px;
+	  	position: absolute;
+	  	font-size: 13px;
+	  	font-weight: 400;
+	  	color: $grey-3;
+	  }
+	}
+
+	.page-panel_reports_report {
+		padding: 15px;
+
+		background-color: #ffffff;
+		border-radius: $c-border-radius;
+		box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+		.main-title:not(:first-of-type) {
+			margin: 20px 0;
+		}
+
+		.page-panel_reports_report_header {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 20px;
+		}
+
+		.page-panel_reports_report_student {
+			display: flex;
+			flex-flow: column;
+
+			&:not(:first-of-type) {
+				margin-top: 20px;
+			}
+
+			&:not(:last-of-type) {
+				padding-bottom: 20px;
+				border-bottom: 1px solid $color-border-2;
+			}
+		}
+
+		.page-panel_reports_report_student_name {
+			width: 15%;
+			margin-bottom: 5px;
+			font-weight: 600;
+			text-align: left;
+		}
+
+		.page-panel_reports_report_student_table {
+			width: 100%;
+			display: flex;
+			flex-flow: column;
+		}
+
+		.page-panel_reports_report_student_table_row {
+			display: flex;
+
+			&:nth-of-type(even) {
+				background-color: $grey-2;
+			}
+
+			span {
+				width: 17%;
+				min-height: 30px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				&:not(:last-of-type) {
+					border-right: 1px solid $color-border-2;
+				}
+			}
+		}
+
+	} 
+
+}

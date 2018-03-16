@@ -1,0 +1,50 @@
+.ui-checkbox {
+	display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:not(:first-of-type) {
+    margin-top: 10px;
+  }
+
+  &.ui-checkbox--display-only {
+    cursor: default;
+
+    label {
+      cursor: default;
+    }
+  }
+
+  input {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  span {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    position: relative;
+    transition: $c-transition;
+    border-radius: $c-border-radius;
+    border: 2px solid $orange;
+
+    svg {
+    	width: 13px;
+    	height: 13px;
+    	color: #ffffff;
+    }
+  }
+
+  input:checked + span {
+  	background-color: $orange;
+  }
+
+  label {
+    line-height: 19px;
+    cursor: pointer;
+  }
+}

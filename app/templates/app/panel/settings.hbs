@@ -1,0 +1,58 @@
+<div class="page-panel_diagnosis page-panel_settings">
+
+  {{ main-panel-header
+    topText=(t "Ustawienia")
+  }}
+
+
+  <div class="page-panel_inner">
+
+    <div class="box {{if model.settings.isLoading 'a-container-loading' }}">
+      <div class="box-part">
+        {{ main-editable-select editableSelectApi=editableSelectLanguageApi editing=model.settings.editable.language.editing loading=model.settings.editable.language.isLoading onSave=(action "onSaveLanguage" "language") }}
+      </div>
+    </div>
+
+    {{#if model.user.isAdmin }}
+      
+      <span class="main-title">Diagnozy</span>
+
+      <div class="box {{if model.settings.isLoading 'a-container-loading' }}">  
+        <div class="box-part">
+
+          {{ main-editable-input editableInputApi=editableInputSkypeDiagnosisPriceApi editing=model.settings.editable.skype_diagnosis_price.editing loading=model.settings.editable.skype_diagnosis_price.isLoading onSave=(action "onSaveSettings" "skype_diagnosis_price") }}
+
+          {{ main-editable-input editableInputApi=editableInputStationaryDiagnosisPriceApi editing=model.settings.editable.stationary_diagnosis_price.editing loading=model.settings.editable.stationary_diagnosis_price.isLoading onSave=(action "onSaveSettings" "stationary_diagnosis_price") }}
+          
+        </div>
+      </div>
+
+      <span class="main-title">Dzienniki</span>
+
+      <div class="box box--talk-questions {{if model.talkQuestions.isLoading 'a-container-loading' }}">
+        <div class="box-part">
+
+          {{ main-editable-input-multiple editableInputMultipleApi=editableTalkFeelingsApi editing=model.talkFeelings.editing }}
+
+          {{ main-editable-input-multiple editableInputMultipleApi=editableTalkParticipantsApi editing=model.talkParticipants.editing }}
+
+          {{ main-editable-input-multiple editableInputMultipleApi=editableDiarySuccessParticipantsApi editing=model.diarySuccessParticipants.editing }}
+
+        </div>
+      </div>
+
+      <span class="main-title">Nagrania</span>
+
+      <div class="box">
+        <div class="box-part">
+          
+          {{ settings-record-categories api=recordCategoriesApi }}
+
+        </div>
+      </div>
+
+    {{/if}}
+
+  </div>
+
+</div>

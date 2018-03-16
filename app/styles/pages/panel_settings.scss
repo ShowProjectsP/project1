@@ -1,0 +1,42 @@
+.page-panel_settings {
+
+  .box:not(:first-of-type) {
+    margin: 0;
+  }
+
+  .box + .main-title {
+    margin: 20px 0 5px 0;
+  } 
+
+  .settings_talk-question_wrapper {
+  	padding: 15px;
+  	cursor: pointer;
+
+  	&.settings_talk-question--editing {
+  		.settings_talk-question {
+  			margin-bottom: 5px;
+  		}
+  	}
+
+  	.settings_talk-question {
+  		position: relative;
+
+			&:not(:last-of-type) {
+  			margin-bottom: 5px;
+  		}
+  	}
+
+  	input {
+  		padding: 7px 68px 7px 9px;
+  		font-size: 15px;
+  	}
+
+  	li {
+  		&:not(:last-of-type) {
+  			margin-bottom: 5px;
+  		}
+  	}
+
+  }
+
+}

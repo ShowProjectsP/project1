@@ -1,0 +1,37 @@
+.button {
+  padding: 6px 10px;
+  font-size: 14px;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  border-radius: $c-border-radius;
+  box-shadow: inset rgba(0, 0, 0, 0.15) 0px -2px 3px 0px;
+  cursor: pointer;
+
+  &:not(.button-filled):not(.button-filled-reversed) {
+    background-color: transparent;
+    border-color: initial;
+  }
+}
+
+.button-filled {
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.button-filled-reversed {
+  background-color: #ffffff;
+}
+
+.button-wide {
+  padding: 15px 19px;
+  font-size: 16px;
+}
+
+.button-wider {
+  padding: 6px 19px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+}

@@ -1,0 +1,8 @@
+{
+  "name": "nowamowa-front",
+  "dependencies": {
+    "ember": "3.0.0-beta.2",
+    "moment": "momentjs#^2.18.1",
+    "pdfmake": "~0.1.33"
+  }
+}

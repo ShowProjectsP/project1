@@ -1,0 +1,57 @@
+<div class="page-panel_messages-threads">
+
+	{{ main-panel-header
+	  topText="Wiadomości"
+	  secondText=secondText
+	}}
+
+
+	<div class="page-panel_inner page-panel_messages-threads_inner">
+
+		
+		<div class="page-panel_messages-threads_threads-wrapper">
+
+			<div class="page-panel_messages-threads_actions">
+				{{ input classNames="input" placeholder="Szukaj rozmów" value=model.searchThreadsValue }}
+
+				{{#link-to "app.panel.messages.new" classNames="button button-filled color-bg_orange h-display-flex" }}
+					<svg class="svg_new-message"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_new-message"></use></svg>
+				{{/link-to}}
+			</div>
+
+			<div class="page-panel_messages-threads_threads {{unless model.threads.collection.length 'page-panel_messages_threads' }} {{if isLoading 'a-container-loading' }}">
+
+				{{#if model.threads.collection.length }}
+					<ul>
+
+						{{#each model.threads.collection as |thread| }}
+							<li class="{{if thread.selected "page-panel_messages-threads_thread--selected" }}" {{ action "setThread" model.threads.collection thread bubbles=false }}>
+								{{#link-to "app.panel.messages.message" thread.id (query-params userId=thread.recipient.id) }}
+									{{ thread.threadName }}
+								{{/link-to}}
+
+								{{#if thread.unread_count }}
+									<span>{{ thread.unread_count }}</span>
+								{{/if}}
+							</li>
+						{{/each}}
+
+					</ul>
+				{{else}}
+
+					<p>Brak czatów</p>
+
+				{{/if}}
+
+			</div>
+
+ 		</div>
+
+
+		{{ outlet }}
+
+
+	</div>
+
+
+</div>

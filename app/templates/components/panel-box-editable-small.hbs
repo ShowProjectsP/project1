@@ -1,0 +1,109 @@
+<span class="panel-box-editable-small_title">{{ title }}</span>
+
+
+{{#unless editing }}
+  <div class="panel-box-editable-small_display">
+    {{#if (compare editableType "input") }}
+
+      {{#if displayValueText }}
+        {{ displayValueText }}
+      {{ else }}
+        <i>Wprowadź</i>
+      {{/if}}
+
+    {{ else if (compare editableType "editable-list") }}
+
+      <ul>
+        {{#if displayValues }}
+          {{#each displayValues as |item| }}
+            <li class="panel-box-editable-small_p_list-item">{{ item.name }}</li>
+          {{/each}}
+        {{ else }}
+          <i>Wprowadź</i>
+        {{/if}}
+
+      </ul>
+
+    {{ else }}
+
+      {{ displayValueText }}
+
+    {{/if}}
+
+    {{#if editableType }} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_edit"></use></svg> {{/if}}
+  </div>
+{{/unless}}
+
+
+{{#if editing }}
+  <div class="panel-box-editable-small_inner {{ editableButtonsClass }}">
+
+
+    {{#if (compare editableType "input") }}
+      {{ input classNames="input" classNameBindings="inputValidation:input-error" value=editValue autofocus="autofocus" placeholder=inputPlaceholder }}
+
+      <div class="panel-box-editable-small_buttons">
+        <button {{ action "save" bubbles=false }}> {{#if loading }} <svg class="svg_loader"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_loader"></use></svg> {{else}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg> {{/if}} </button>
+        <button {{ action "cancel" bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></button>
+      </div>
+    {{/if}}
+
+
+    {{#if (compare editableType "select") }}
+      <div>
+        {{#each selectApi.values as |select| }}
+
+          {{ ui-radio-button name=selectApi.name for=(if (h-is-boolean select.value) (h-to-string select.value) select.value)  value=(t select.displayValue) checked=(compare editValue select.value) uiRadioButtonValue=editValue }}
+
+        {{/each}}
+      </div>
+
+      <div class="panel-box-editable-small_buttons">
+        <button {{ action "save" bubbles=false }}> {{#if loading }} <svg class="svg_loader"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_loader"></use></svg> {{else}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg> {{/if}} </button>
+        <button {{ action "cancel" bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></button>
+      </div>
+    {{/if}}
+
+
+    {{#if (compare editableType "select-menu") }}
+
+      {{ ui-select-menu value=selectMenuApi.value editValue=editValue selectMenuApi=selectMenuApi }}
+
+      <div class="panel-box-editable-small_buttons">
+        <button {{ action "save" bubbles=false }}> {{#if loading }} <svg class="svg_loader"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_loader"></use></svg> {{else}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg> {{/if}} </button>
+        <button {{ action "cancel" bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></button>
+      </div>
+
+    {{/if}}
+
+
+    {{#if (compare editableType "editable-list") }}
+
+      {{#each editListValue as |item| }}
+        <div class="panel-box-editable-small_input-buttons">
+          {{ input classNames="input" classNameBindings="inputValidation:input-error" value=item.name autofocus="autofocus" }}
+
+          <div class="panel-box-editable-small_buttons">
+            <button {{ action "deleteEditableListItem" item.id bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></button>
+          </div>
+        </div>
+      {{/each}}
+
+      <div class="panel-box-editable-small_input-buttons">
+        {{ input classNames="input" classNameBindings="inputValidation:input-error" value=newEditableListItem placeholder="Dodaj" autofocus="autofocus" }}
+
+        <div class="panel-box-editable-small_buttons">
+          <button {{ action "createEditableListItem" newEditableListItem bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_plus"></use></svg></button>
+        </div>
+      </div>
+
+      <div class="panel-box-editable-small_buttons">
+        <button {{ action "save" bubbles=false }}> {{#if loading }} <svg class="svg_loader"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_loader"></use></svg> {{else}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg> {{/if}} </button>
+        <button {{ action "cancel" bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></button>
+      </div>
+
+    {{/if}}
+
+
+  </div>
+{{/if}}

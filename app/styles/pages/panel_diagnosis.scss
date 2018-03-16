@@ -1,0 +1,81 @@
+.page-panel_diagnosis {
+
+  img {
+      width: 100px;
+      height: 100px;
+    }
+
+  .box {
+    display: flex;
+    transition: $c-transition;
+    background-color: #ffffff;
+    border-radius: $c-border-radius;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+    &:not(:first-of-type) {
+      margin-top: 20px;
+    }
+
+    &.a-container-loading {
+      min-height: 65px;
+    }
+
+    &.box--details.a-container-loading {
+      min-height: 325px;
+    }
+
+    .box-part {
+      width: 50%;
+    }
+
+    section {
+      display: flex;
+      flex-flow: column;
+      padding: 15px 15px;
+      transition: $c-transition;
+      border-left: 2px solid #ffffff;
+
+      &:first-of-type {
+        padding: 15px 15px 15px 13px;
+        border-top-left-radius: $c-border-radius;
+      }
+
+      &:last-of-type {
+        padding: 15px 15px 15px 13px;
+        border-bottom-left-radius: $c-border-radius;
+      }
+
+      &.editable {
+        cursor: pointer;
+
+        &:hover {
+          border-left: 2px solid $orange;
+        }
+      }
+
+      span {
+        margin-bottom: 5px;
+        font-size: 15px;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: $orange;
+      }
+
+      p {
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        color: $grey-1;
+
+        svg {
+          width: 10px;
+          height: 10px;
+          margin-left: 10px;
+          color: $grey-1;
+          transition: $c-transition;
+        }
+      }
+    }
+  }
+
+}

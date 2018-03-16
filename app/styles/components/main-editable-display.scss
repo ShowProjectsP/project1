@@ -1,0 +1,23 @@
+.main-editable-display {
+	width: 100%;
+	display: flex;
+  flex-flow: column;
+  padding: 15px 15px;
+  position: relative;
+  transition: $c-transition;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: $c-border-radius;
+
+  p, i {
+  	display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: $grey-1;
+  }
+
+  a {
+    text-decoration: underline;
+    color: $grey-1;
+  }
+}

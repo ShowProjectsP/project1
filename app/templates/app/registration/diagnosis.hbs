@@ -1,0 +1,25 @@
+<div class="main-page page-registration_diagnosis">
+
+  <form {{ action "pay" on="submit" }}>
+    <h1 class="main-h1-header">{{t "Wypełnij kartę diagnozy" }}</h1>
+
+    <h2 class="main-h2-header">{{t "Typ diagnozy:" }}</h2>
+
+    <div class="page-registration_diagnosis_select">
+      {{ ui-radio-button name="diagnosis-type" for="skype" value="Skype" checked=true uiRadioButtonValue=uiRadioButtonValue }}
+      {{ ui-radio-button name="diagnosis-type" for="stationary" value="Stacjonarnie" uiRadioButtonValue=uiRadioButtonValue }}
+    </div>
+
+    {{ textarea
+      classNames="input"
+      placeholder=(t "Informacje dodatkowe")
+      value=model.params.notes_from_student
+    }}
+
+    <div class="main-page_form_buttons">
+      <button class="button button-wide button-filled color-bg_orange {{if model.isLoading 'a-button-loading' }}" type="submit">{{t "Zapłać" }}</button>
+    </div>
+
+  </form>
+
+</div>

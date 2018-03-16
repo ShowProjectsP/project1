@@ -1,0 +1,46 @@
+<div class="main-page page-login">
+
+  <form {{ action "login" on="submit" }}>
+    <h1 class="main-h1-header">{{t "Zaloguj się" }}</h1>
+
+    {{ input
+      type="text"
+      classNames="input"
+      classNameBindings="loginErrors.email:input-error loginErrors.login:input-error"
+      key-up="validateForm"
+      placeholder=(t "Adres email") value=email
+    }}
+
+    {{ input
+      type="password"
+      classNames="input"
+      classNameBindings="loginErrors.password:input-error loginErrors.login:input-error"
+      key-up="validateForm"
+      placeholder=(t "Hasło")
+      value=model.password
+    }}
+
+    <div class="main-page_form_buttons">
+      <p>
+        {{#link-to 'app.login.forgot-password' }} {{t "Zapomniałeś hasło?" }} {{/link-to}}
+        {{#link-to 'app.registration' }} {{t "Zarejestruj się" }} {{/link-to}}
+      </p>
+      <button class="button button-wide button-filled color-bg_orange {{if model.isLoading 'a-button-loading' }}" type="submit">{{t "Zaloguj" }}</button>
+    </div>
+  </form>
+
+  <div class="main-errors-container">
+    {{#if loginErrors.email }}
+      <span class="color-text_red">{{t "Adres email jest wymagany." }}</span>
+    {{/if}}
+
+    {{#if loginErrors.password }}
+      <span class="color-text_red">{{t "Hasło jest wymagane." }}</span>
+    {{/if}}
+
+    {{#if loginErrors.login }}
+      <span class="color-text_red">{{t "Niepoprawny login lub hasło!" }}</span>
+    {{/if}}
+  </div>
+
+</div>

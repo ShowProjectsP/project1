@@ -1,0 +1,43 @@
+<div class="page-panel_diaries-admin">
+
+	{{ main-panel-header
+	  topText="Dzienniki"
+	}}
+
+
+	<div class="page-panel_inner {{if model.diaries.isLoading 'a-container-loading' }}">
+
+		{{#if model.diaries.collection.length }}
+
+			{{#main-panel-titles}}
+				<span class="main-title">Kursant</span>
+				<span class="main-title">Utworzony</span>
+				<span class="main-title">Edytowany</span>
+			{{/main-panel-titles}}
+
+			{{#each model.diaries.collection as |diary| }}
+				
+				{{#link-to "app.panel.diary-admin" diary.id (query-params studentId=diary.user.id) classNames="main-panel-list-element" }}
+		      <span>{{ diary.user.first_name }} {{ diary.user.last_name }}</span>
+		      <span>{{ h-moment diary.created_at "LLL" }}</span>
+		      <span>{{ h-moment diary.updated_at "LLL" }}</span>
+		    {{/link-to }}
+
+			{{/each}}
+
+		{{/if}}
+
+	</div>
+
+	{{#if model.diaries.collection.length }}
+
+		{{ panel-pagination
+	    pagesCount=model.diaries.pagesCount
+	    currentPage=model.diaries.page
+	    route="app.panel.diaries-admin"
+	  }}
+
+	{{/if}}
+
+
+</div>

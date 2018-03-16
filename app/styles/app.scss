@@ -1,0 +1,73 @@
+// ui
+@import "./ui/reset.scss";
+@import "./ui/fonts.scss";
+@import "./ui/colors.scss";
+@import "./ui/colors-helpers.scss";
+@import "./ui/constants.scss";
+@import "./ui/mixins.scss";
+@import "./ui/helpers.scss";
+@import "./ui/inputs.scss";
+@import "./ui/buttons.scss";
+@import "./ui/animations.scss";
+@import "./ui/svg.scss";
+@import "./ui/main.scss";
+
+
+// components
+@import "./components/ui-dropdown-menu.scss";
+@import "./components/ui-select-menu.scss";
+@import "./components/ui-radio-button.scss";
+@import "./components/ui-tooltip.scss";
+@import "./components/ui-checkbox.scss";
+
+@import "./components/main-navigation.scss";
+@import "./components/main-panel-header.scss";
+@import "./components/main-panel-list-element.scss";
+@import "./components/main-panel-titles.scss";
+@import "./components/main-sorting-panel.scss";
+@import "./components/main-locales.scss";
+@import "./components/main-slider.scss";
+
+@import "./components/main-editable-select.scss";
+@import "./components/main-editable-input.scss";
+@import "./components/main-editable-custom.scss";
+@import "./components/main-editable-display.scss";
+@import "./components/main-editable-input-multiple.scss";
+
+@import "./components/main-header.scss";
+
+@import "./components/panel-diagnosis-box-editable.scss";
+@import "./components/panel-box-editable-small.scss";
+@import "./components/panel-pagination.scss";
+@import "./components/panel-messages-textarea.scss";
+
+@import "./components/panel-diary-user-input.scss";
+@import "./components/panel-diary-user-select.scss";
+@import "./components/panel-diary-admin-display.scss";
+
+@import "./components/settings-record-categories.scss";
+
+
+// dialogs
+@import "./components/settings-record-categories-dialog.scss";
+
+
+// pages
+@import "./pages/login.scss";
+
+@import "./pages/registration_diagnosis.scss";
+
+@import "./pages/panel.scss";
+@import "./pages/panel_diagnosis.scss";
+@import "./pages/panel_groups.scss";
+@import "./pages/panel_group.scss";
+@import "./pages/panel_settings.scss";
+@import "./pages/panel_student.scss";
+@import "./pages/panel_reports.scss";
+@import "./pages/panel_messages-threads.scss";
+@import "./pages/panel_messages.scss";
+@import "./pages/panel_messages_new.scss";
+@import "./pages/panel_diaries-user.scss";
+@import "./pages/panel_diaries-user_diary.scss";
+@import "./pages/panel_diaries-admin.scss";
+@import "./pages/panel_diaries-admin_diary.scss";

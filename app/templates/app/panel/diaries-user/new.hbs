@@ -1,0 +1,33 @@
+<div class="page-panel_diaries-user_diary">
+
+	<div class="page-panel_diaries-user_diary_header">
+		<span class="page-panel_diaries-user_diary_header_title">{{ h-moment model.diary.created_at "LLLL" }}</span>
+
+		<button class="button button-filled color-bg_orange {{if model.diary.isLoading 'a-button-loading a-button-loading--small' }}" disabled={{ createButtonDisabled }} {{ action "create" }}>
+			<svg class="svg_save"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_save"></use></svg>
+		</button>
+	</div>
+
+	<div class="page-panel_diaries-user_diary_inner">
+
+		{{ panel-diary-user-input name="Ilość ćwiczeń rozluźniających" value=model.diary.editable.meditation_count.value type="number" }}
+
+		{{ panel-diary-user-input name="Ilość wizualizacji" value=model.diary.editable.visualisation_count.value type="number" }}
+
+		{{ panel-diary-user-input name="Ilość ćwiczeń kotwicy" value=model.diary.editable.anchor_count.value type="number" }}
+
+		{{ panel-diary-user-select name="Czy używałeś starej mowy?" api=oldSpeechUsageApi }}
+
+		{{ panel-diary-user-select name="Samopoczucie" api=talkFeelingsApi }}
+
+		{{ panel-diary-user-select name="Kontakty" api=diarySuccessParticipantsApi }}
+
+		{{ panel-diary-user-select name="Kontakty bez nagrania" api=talkParticipantsWithoutRecordApi }}
+
+		{{ panel-diary-user-select name="Telefony bez nagrania" api=phoneCallParticipantsWithoutRecordApi }}
+
+		{{ panel-diary-user-input name="Opisz swój dzień" large=true value=model.diary.editable.notes.value }}
+
+	</div>
+
+</div>

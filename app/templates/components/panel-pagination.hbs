@@ -1,0 +1,19 @@
+{{#link-to route (query-params page=previousPage) classNames="panel-pagination_button" class=(if (compare displayValue 1) "panel-pagination_button--hidden") }}
+	<svg class="svg_arrow_left"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_arrow_left"></use></svg>
+{{/link-to}}
+
+<span class="panel-pagination_button panel-pagination_button--selected">
+  {{ displayValue }}
+</span>
+
+<span class="panel-pagination_button panel-pagination_button--unselectable">
+  ...
+</span>
+
+{{#link-to route (query-params page=pagesCount) classNames="panel-pagination_button" }}
+	{{ pagesCount }}
+{{/link-to }}
+
+{{#link-to route (query-params page=nextPage) classNames="panel-pagination_button panel-pagination_button--last" class=(if (compare displayValue pagesCount) "panel-pagination_button--hidden") }}
+	<svg class="svg_arrow_right"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_arrow_right"></use></svg>
+{{/link-to}}

@@ -1,0 +1,74 @@
+.ui-select-menu {
+	min-width: 150px;
+	display: inline-block;
+	position: relative;
+	font-size: 15px;
+	color: $grey-1;
+
+	.ui-select-menu_opener {
+		height: 34px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 7px 9px;
+		box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid $color-border-2;
+	  border-radius: $c-border-radius;
+	  transition: $c-transition;
+	  cursor: pointer;
+
+	  svg {
+	  	margin-left: 10px;
+	  	color: $grey-1;
+	  }
+	}
+
+	.ui-select-menu_inner {
+		width: calc(100% - 2px);
+		max-height: 200px;
+		margin-top: 5px;
+		padding: 7px 0;
+		position: absolute;
+		z-index: 9;
+		overflow: auto;
+		list-style: none;
+		background-color: #ffffff;
+    border: 1px solid $color-border-2;
+	  border-radius: $c-border-radius;
+
+	  li {
+	  	display: flex;
+	  	align-items: center;
+	  	justify-content: space-between;
+	  	padding: 7px 9px;
+	  	transition: $c-transition;
+	  	cursor: pointer;
+	  	user-select: none;
+
+	  	svg {
+	  		width: 14px;
+	  		height: 14px;
+	  	}
+
+	  	&:hover {
+	  		color: #ffffff;
+	  		background-color: $orange;
+	  	}
+	  }
+	}
+
+	.ui-select-menu_more {
+		padding: 7px 9px;
+		text-align: center;
+		color: white;
+		transition: $c-transition;
+		cursor: pointer;
+		background-color: $grey-1;
+
+		&:hover {
+			background-color: $orange;
+		}
+	}
+
+}

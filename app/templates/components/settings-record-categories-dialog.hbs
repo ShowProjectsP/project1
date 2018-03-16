@@ -1,0 +1,33 @@
+<div class="main-dialog_mask" {{ action "close" }}></div>
+
+<div class="main-dialog_wrapper">
+
+	<header>
+		<span class="main-title">header</span>
+		<svg {{ action "close" }}><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg>
+	</header>
+
+	<div class="main-dialog_inner {{if students.isLoading 'a-container-loading' }}">
+
+		{{#if students.collection.length }}
+
+			<ul>
+				{{#each students.collection as |student| }}
+
+					<li>
+						{{ student.first_name }} {{ student.last_name }}
+						<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg>
+					</li>
+
+				{{/each}}
+			</ul>
+
+		{{else}}
+
+			Brak kursantów
+
+		{{/if}}
+
+	</div>
+
+</div>

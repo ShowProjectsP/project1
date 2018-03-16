@@ -1,0 +1,38 @@
+<div class="ui-select-menu_opener {{if isError "select-menu_opener--error" }}" {{ action "open" }}>
+  <p>{{ selectedValue }}</p>
+  <svg class="svg_triangle_down"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_triangle_down"></use></svg>
+</div>
+
+{{#if selectMenuOpened }}
+  <ul class="ui-select-menu_inner">
+
+  	{{#if selectMenuApi }}
+
+  		{{#each selectMenuApi.values as |value| }}
+  			<li {{ action "selectOption" value.value value }}>
+
+          {{ value.displayValue }}
+
+          {{#if value.selected }}
+            <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg>
+          {{/if}}
+
+        </li>
+  		{{/each}}
+
+      {{#if selectMenuApi.isMore}}
+
+        <div class="ui-select-menu_more" {{ action "loadMore" }}>
+          Wczytaj więcej
+        </div>
+
+      {{/if}}
+
+  	{{ else }}
+
+    	{{ yield }}
+
+    {{/if}}
+
+  </ul>
+{{/if}}

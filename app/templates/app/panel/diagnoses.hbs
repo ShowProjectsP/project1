@@ -1,0 +1,31 @@
+{{ main-panel-header
+  topText="Diagnozy"
+}}
+
+
+<div class="page-panel_inner {{if model.isLoading 'a-container-loading' }}">
+
+  {{#each model.collection as |diagnosis| }}
+
+    {{#link-to "app.panel.diagnosis" diagnosis.id classNames="main-panel-list-element" }}
+      <span>{{ diagnosis.user.first_name }} {{ diagnosis.user.last_name }}</span>
+      <span>{{ h-moment diagnosis.created_at "LL" }}</span>
+      <span>{{#if (compare diagnosis.diagnosis_type "skype") }} Skype {{else}} Stacjonarnie {{/if}}</span>
+      <span>{{#if diagnosis.is_paid }} Tak {{else}} Nie {{/if}}</span>
+      <span>{{#if diagnosis.is_done }} Tak {{else}} Nie {{/if}}</span>
+    {{/link-to }}
+
+  {{/each}}
+
+</div>
+
+
+{{#if model.collection.length }}
+
+  {{ panel-pagination
+    pagesCount=model.pagesCount
+    currentPage=model.page
+    onSelect="onSelect"
+  }}
+
+{{/if}}

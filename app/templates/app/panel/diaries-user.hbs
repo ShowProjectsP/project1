@@ -1,0 +1,66 @@
+<div class="page-panel_diaries-user">
+
+	{{ main-panel-header
+	  topText="Dzienniki"
+	  bottomText=bottomText
+	  secondText=secondText
+	}}
+
+	<div class="page-panel_inner page-panel_diaries-user_inner">
+
+		<div class="page-panel_diaries-user_list {{if model.diaries.isLoading "a-container-loading" }}">
+
+			{{#each model.diaries.years as |year| }}
+				<div class="page-panel_diaries-user_year">
+
+					<span {{ action "toggleExpandedYear" year }}>{{ year.name }}</span>
+
+					{{#if year.expanded }}
+						<div class="page-panel_diaries-user_months">
+							{{#each year.months as |month| }}
+
+								<div class="page-panel_diaries-user_month">
+									{{ month.displayName }}
+
+									<ul>
+										{{#each month.days as |day| }} 
+
+											<li class="{{if (compare day.id model.diaries.selectedDiaryId) 'page-panel_diaries-user_day--selected' }}" {{ action "selectDay" day }}>
+												{{#if (compare day.id "new") }}
+
+													{{#link-to "app.panel.diaries-user.new" classNames="page-panel_diaries-user_day" }}
+														{{ day.date }}
+													{{/link-to}}
+
+												{{else}}
+
+													{{#link-to "app.panel.diaries-user.diary" day.id classNames="page-panel_diaries-user_day" }}
+														{{ day.diaryNameInDiariesList }}
+
+														{{!-- {{#if day.isPending }}<svg class="svg_clock-pending color_text_orange"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_clock-pending"></use></svg>{{/if}} --}}
+														{{#if day.isCorrect }}<svg class="svg_ok color-text_green"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg>{{/if}}
+														{{#if day.notCorrect }}<svg class="svg_cancel color-text_red"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg>{{/if}}
+
+													{{/link-to}}
+
+												{{/if}}
+											</li>
+
+										{{/each}}
+									</ul>
+								</div>
+
+							{{/each}}
+						</div>
+					{{/if}}
+
+				</div>
+			{{/each}}
+
+		</div>
+
+		{{ outlet }}
+
+	</div>
+
+</div>

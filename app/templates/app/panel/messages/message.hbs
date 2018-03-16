@@ -1,0 +1,36 @@
+<div class="page-panel_messages_list {{if model.messages.isLoading 'a-container-loading' }} {{unless model.messages 'a-container-loading' }}">
+
+	<div class="page-panel_messages_list_header">
+
+		<div class="page-panel_messages_list_header_photo" style="{{ h-safe-string "background-image: url('{photo}');" photo=model.student.photo.value }}" {{ action "goToUserProfile" model.thread.recipient.id }}>
+			{{#unless model.student.photo.isLoading }}
+			{{#unless model.student.photo.value }}
+				<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_user"></use></svg>
+			{{/unless}}
+			{{/unless}}
+		</div>
+
+		<span {{ action "goToUserProfile" model.thread.recipient.id }}>{{ model.thread.threadName }}</span>
+
+	</div>
+
+	<ul>
+		{{#each model.messages.collection as |message| }}
+			<li class="{{if message.mineMessage "page-panel_messages_message--mine" }} {{if message.leftMargin "page-panel_messages_message--left-margin" }}">
+
+				{{#if message.displayAvatar }}
+					<div class="page-panel_messages_list_header_photo" style="{{ h-safe-string "background-image: url('{photo}');" photo=model.student.photo.value }}" {{ action "goToUserProfile" message.author_id }}></div>
+				{{/if}}
+
+				<span>{{ message.message }}</span>
+
+				{{#if message.attachment_url }}
+				{{/if}}
+
+			</li>
+		{{/each}}
+	</ul>
+
+	{{ panel-messages-textarea model=model }}
+
+</div>

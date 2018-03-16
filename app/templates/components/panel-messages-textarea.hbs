@@ -1,0 +1,28 @@
+{{ textarea placeholder="Napisz wiadomosc..." value=model.messages.newMessageValue }}
+
+<div class="page-panel_messages_textarea_buttons">
+
+	<div class="ui-tooltip_wrapper">
+		<svg class="svg_file"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_file"></use></svg>
+		{{ ui-tooltip text="Dokument" }}
+	</div>
+
+	<div class="ui-tooltip_wrapper">
+		<svg class="svg_image"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_image"></use></svg>
+		{{ ui-tooltip text="Obraz" }}
+	</div>
+
+	<div class="ui-tooltip_wrapper">
+		<svg class="svg_video"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_video"></use></svg>
+		{{ ui-tooltip text="Wideo" }}
+	</div>
+
+	<div class="ui-tooltip_wrapper">
+		<svg class="svg_audio"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_audio"></use></svg>
+		{{ ui-tooltip text="Nagranie" }}
+	</div>
+
+	<button class="button button-filled color-bg_orange h-display-flex {{if model.messages.isSending 'a-button-loading a-button-loading--small' }}" disabled={{ sendButtonDisabled }} {{ action "sendMessage" }}>
+		<svg class="svg_send"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_send"></use></svg>
+	</button>
+</div>

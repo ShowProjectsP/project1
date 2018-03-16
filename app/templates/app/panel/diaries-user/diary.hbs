@@ -1,0 +1,71 @@
+<div class="page-panel_diaries-user_diary {{if model.diary.isLoading 'a-container-loading' }}">
+
+	<div class="page-panel_diaries-user_diary_header">
+		<span class="page-panel_diaries-user_diary_header_title">{{ h-moment model.diary.created_at "LLLL" }}</span>
+
+		{{#if model.diary.canEdit }}
+			<button class="button button-filled color-bg_orange {{if model.diary.isUpdating 'a-button-loading a-button-loading--small' }}" {{ action "update" }}>
+				<svg class="svg_save"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_save"></use></svg>
+			</button>
+		{{/if}}
+
+		{{#unless (compare model.diary.created_at model.diary.updated_at) }}
+			<p class="color_text_orange ui-tooltip_wrapper">
+				<svg class="svg_edit"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_edit"></use></svg>
+				{{ ui-tooltip text=(t model.diary.editedText) }}
+			</p>
+		{{/unless}}
+
+		{{#if model.diary.isPending }}
+			<p class="color_text_orange">
+				<svg class="svg_clock-pending"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_clock-pending"></use></svg>
+				<span>Oczekiwanie</span>
+			</p>
+		{{/if}}
+
+		{{#if model.diary.isCorrect }}
+			<p class="color-text_green">
+				<svg class="svg_ok"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg>
+				<span>Zaliczony</span>
+			</p>
+		{{/if}}
+
+		{{#if model.diary.notCorrect }}
+			<p class="color-text_red">
+				<svg class="svg_cancel"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg>
+				<span>Niezaliczony</span>
+			</p>
+		{{/if}}
+	
+	</div>
+
+	<div class="page-panel_diaries-user_diary_inner">
+
+		{{#if showReviewBox }}
+			<div class="page-panel_diaries-user_diary_review {{if model.diary.isCorrect 'color-bg_green' }} {{if model.diary.notCorrect 'color-bg_red' }}">
+				<p>{{ model.diary.review_details }}</p>
+				<span>{{ model.diary.reviewer.first_name }} {{ model.diary.reviewer.last_name }}</span>
+			</div>
+		{{/if}}
+
+		{{ panel-diary-user-input name="Ilość ćwiczeń rozluźniających" value=model.diary.meditation_count type="number" editing=model.diary.editable.meditation_count.editing }}
+
+		{{ panel-diary-user-input name="Ilość wizualizacji" value=model.diary.visualisation_count type="number" editing=model.diary.editable.visualisation_count.editing }}
+
+		{{ panel-diary-user-input name="Ilość ćwiczeń kotwicy" value=model.diary.anchor_count type="number" editing=model.diary.editable.anchor_count.editing }}
+
+		{{ panel-diary-user-select name="Czy używałeś starej mowy?" api=oldSpeechUsageApi editing=model.diary.editable.old_speech_usage.editing }}
+
+		{{ panel-diary-user-select name="Samopoczucie" api=talkFeelingsApi editing=model.diary.editable.talk_feeling_id.editing }}
+
+		{{ panel-diary-user-select name="Kontakty" api=diarySuccessParticipantsApi editing=model.diary.editable.diary_success_participant_ids.editing }}
+
+		{{ panel-diary-user-select name="Kontakty bez nagrania" api=talkParticipantsWithoutRecordApi editing=model.diary.editable.talk_participants_without_record_ids.editing }}
+
+		{{ panel-diary-user-select name="Telefony bez nagrania" api=phoneCallParticipantsWithoutRecordApi editing=model.diary.editable.phone_call_participants_without_record_ids.editing }}
+
+		{{ panel-diary-user-input name="Opisz swój dzień" large=true value=model.diary.notes editing=model.diary.editable.notes.editing }}
+
+	</div>
+
+</div>

@@ -1,0 +1,166 @@
+.panel-box-editable-small {
+  display: flex;
+  flex-flow: column;
+  padding: 15px 15px;
+  position: relative;
+  transition: $c-transition;
+  border-left: 2px solid #ffffff;
+
+  &:first-of-type {
+    padding: 15px 15px 15px 13px;
+  }
+
+  &:last-of-type {
+    padding: 15px 15px 15px 13px;
+  }
+
+  &.panel-box-editable-small--editable {
+    cursor: pointer;
+
+    &:hover {
+      border-left: 2px solid $orange;
+    }
+  }
+
+  &.panel-box-editable-small--editing {
+    border-left: 2px solid $orange;
+  }
+
+  .panel-box-editable-small_title {
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: $orange;
+  }
+
+  .panel-box-editable-small_display {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: $grey-1;
+
+    ul {
+      li {
+        &:not(:first-of-type) {
+          margin-top: 5px;
+        }
+      }
+    }
+
+    svg {
+      width: 10px;
+      height: 10px;
+      margin-left: 10px;
+      color: $grey-1;
+      transition: $c-transition;
+    }
+  }
+
+  .panel-box-editable-small_inner {
+    width: 100%;
+  }
+
+  .panel-box-editable-small_buttons {
+    display: flex;
+    position: absolute;
+
+    button {
+      top: 0;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: $c-transition;
+      cursor: pointer;
+      outline: none;
+      background-color: transparent;
+      border: none;
+
+      &:first-of-type {
+        border-radius: $c-border-radius 0 0 $c-border-radius;
+      }
+
+      &:last-of-type {
+        border-radius: 0 $c-border-radius $c-border-radius 0;
+      }
+
+      &:hover {
+        color: #ffffff;
+        background-color: $orange;
+
+        svg {
+          color: #ffffff;
+        }
+      }
+
+      svg {
+        width: 14px;
+        height: 14px;
+        color: $grey-1;
+
+        &.svg_loader {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+
+  .panel-box-editable-small_inner--input {
+    position: relative;
+
+    .panel-box-editable-small_buttons {
+      top: 0;
+      right: 0;
+    }
+  }
+
+  .panel-box-editable-small_inner--select {
+    .panel-box-editable-small_buttons {
+      top: 15px;
+      right: 15px;
+    }
+  }
+
+  .panel-box-editable-small_inner--select-menu {
+    
+    .panel-box-editable-small_buttons {
+      top: 15px;
+      right: 15px;
+    }
+  }
+
+  .panel-box-editable-small_inner--editable-list {
+    input {
+      &:not(:first-of-type) {
+        margin-top: 5px;
+      }
+    }
+
+    .panel-box-editable-small_input-buttons {
+      max-width: 50%;
+      position: relative;
+
+      &:not(:first-of-type)  {
+        margin-top: 5px;
+      }
+
+      .panel-box-editable-small_buttons:last-of-type {
+        top: 0;
+        right: 0;
+      }
+    }
+    
+    .panel-box-editable-small_buttons:last-of-type {
+      top: 15px;
+      right: 15px;
+    }
+  }
+
+  input {
+    padding: 7px 68px 7px 9px;
+    font-size: 15px;
+  }
+}

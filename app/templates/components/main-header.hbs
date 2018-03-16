@@ -1,0 +1,106 @@
+<a href="/" class="main-header_logo image_logo"></a>
+
+{{#if model.user.loggedIn }}
+
+  <div class="main-header_inner">
+
+    <nav>
+      {{#link-to "app.panel.index" class="main-header_nav_link ui-tooltip_wrapper" }}
+        <svg class="svg_home {{if (compare router.currentRouteName "app.panel.index") 'active' }}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_home"></use></svg>
+        {{ ui-tooltip text=(t "Strona główna") }}
+      {{/link-to}}
+
+      {{#if model.user.isStudent }}
+
+        {{#if (compare diaries.path "new") }}
+          {{#link-to "app.panel.diaries-user.new" class="main-header_nav_link ui-tooltip_wrapper" }}
+            <svg class="svg_article {{if (compare router.currentRouteName "app.panel.diaries-user.new") 'active' }} {{if (compare router.currentRouteName "app.panel.diaries-user.diary") 'active' }}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_article"></use></svg>
+            {{ ui-tooltip text=(t "Dzienniki") }}
+          {{/link-to}}
+        {{else}}
+          {{#link-to "app.panel.diaries-user.diary" diaries.queryParam class="main-header_nav_link ui-tooltip_wrapper" }}
+            <svg class="svg_article {{if (compare router.currentRouteName "app.panel.diaries-user.diary") 'active' }}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_article"></use></svg>
+            {{ ui-tooltip text=(t "Dzienniki") }}
+          {{/link-to}}
+        {{/if}}
+
+        {{#if (compare diaries.path "new") }}
+          {{#link-to "app.panel.records-user.new" class="main-header_nav_link ui-tooltip_wrapper" }}
+            <svg class="svg_microphone {{if (compare router.currentRouteName "app.panel.records-user.new") 'active' }} {{if (compare router.currentRouteName "app.panel.records-user.diary") 'active' }}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_microphone"></use></svg>
+            {{ ui-tooltip text=(t "Nagrania") }}
+          {{/link-to}}
+        {{else}}
+          {{#link-to "app.panel.records-user.record" records.queryParam class="main-header_nav_link ui-tooltip_wrapper" }}
+            <svg class="svg_microphone {{if (compare router.currentRouteName "app.panel.records-user.record") 'active' }}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_microphone"></use></svg>
+            {{ ui-tooltip text=(t "Nagrania") }}
+          {{/link-to}}
+        {{/if}}
+
+      {{/if}}
+
+      {{#if model.user.isAdmin }}
+
+        {{#link-to "app.panel.students" (query-params page=1) class="main-header_nav_link ui-tooltip_wrapper" }}
+          <svg class="svg_students {{if (compare router.currentRouteName "app.panel.students") 'active' }} {{if (compare router.currentRouteName "app.panel.student") 'active' }}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_students"></use></svg>
+          {{ ui-tooltip text=(t "Kursanci") }}
+        {{/link-to}}
+
+        {{#link-to "app.panel.groups" (query-params page=1) class="main-header_nav_link ui-tooltip_wrapper" }}
+          <svg class="svg_groups {{if (compare router.currentRouteName "app.panel.groups") 'active' }} {{if (compare router.currentRouteName "app.panel.group") 'active' }}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_groups"></use></svg>
+          {{ ui-tooltip text="Grupy" }}
+        {{/link-to}}
+
+        {{#link-to "app.panel.reports" class="main-header_nav_link ui-tooltip_wrapper" }}
+          <svg class="svg_reports {{if (compare router.currentRouteName "app.panel.reports") 'active' }}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_reports"></use></svg>
+          {{ ui-tooltip text=(t "Raporty") }}
+        {{/link-to}}
+        
+        {{#link-to "app.panel.diagnoses" (query-params page=1) class="main-header_nav_link ui-tooltip_wrapper" }}
+          <svg class="svg_diagnosis {{if (compare router.currentRouteName "app.panel.diagnoses") 'active' }} {{if (compare router.currentRouteName "app.panel.diagnosis") 'active' }}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_diagnosis"></use></svg>
+          {{ ui-tooltip text=(t "Diagnozy") }}
+        {{/link-to}}
+
+        {{#link-to "app.panel.diaries-admin" (query-params page=1) class="main-header_nav_link ui-tooltip_wrapper" }}
+          <svg class="svg_article {{if (compare router.currentRouteName "app.panel.diaries-admin") 'active' }} {{if (compare router.currentRouteName "app.panel.diary-admin") 'active' }}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_article"></use></svg>
+          {{ ui-tooltip text=(t "Dzienniki") }}
+        {{/link-to}}
+        
+      {{/if}}
+
+      {{#link-to "app.panel.messages.message" messages.lastThreadId (query-params userId=messages.userId) class="main-header_nav_link ui-tooltip_wrapper" }}
+        <svg class="svg_envelope {{if (compare router.currentRouteName "app.panel.messages.message") 'active' }} {{if (compare router.currentRouteName "app.panel.messages.new") 'active' }}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_envelope"></use></svg>
+        {{ ui-tooltip text=(t "Wiadomości") }}
+      {{/link-to}}
+
+      {{#link-to "app.panel.settings" class="main-header_nav_link ui-tooltip_wrapper" }}
+        <svg class="svg_settings {{if (compare router.currentRouteName "app.panel.settings") 'active' }}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_settings"></use></svg>
+        {{ ui-tooltip text=(t "Ustawienia") }}
+      {{/link-to}}
+
+      <div class="ui-dropdown-menu_opener_wrapper main-header_nav_menu_wrapper {{if userDropdownOpened 'main-header_nav_menu_wrapper--clicked' }}">
+        <div class="main-header_nav_menu">
+          <svg class="svg_user"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_user"></use></svg>
+          <span>{{ model.user.first_name }}</span>
+          <svg class="svg_triangle_down"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_triangle_down"></use></svg>
+        </div>
+
+        <div class="ui-dropdown-menu_opener {{if userDropdownOpened 'ui-dropdown-menu_opener--opened' }}" {{ action "openUserDropdown" }}><span class="ui-dropdown-menu_opener_arrow color-bg_white"></span></div>
+        {{#if userDropdownOpened }}
+          {{#ui-dropdown-menu classNames="ui-dropdown-menu_right" dropdownMenuOpened=userDropdownOpened }}
+
+            {{#if model.user.isStudent }}
+              <li>{{#link-to "app.panel.my-history" }} {{t "Moja historia" }} {{/link-to}}</li>
+              <li>{{#link-to "app.panel.my-newspeech" }} {{t "Moja nowamowa" }} {{/link-to}}</li>
+            {{/if}}
+
+          {{/ui-dropdown-menu}}
+        {{/if}}
+      </div>
+
+      <button class="button button-filled color-bg_orange" {{ action "logout" }}>{{t "Wyloguj" }}</button>
+    </nav>
+
+
+  </div>
+
+{{/if}}

@@ -1,0 +1,20 @@
+<span class="main-title">{{ name }}</span>
+
+{{#if (h-is-defined value) }}
+	<p>{{ value }}</p>
+{{/if}}
+
+
+{{#if list }}
+	
+	{{#each list.values as |value| }}
+
+		{{ ui-checkbox value=value.name name=name for=value.name checked=true displayOnly=true }}
+
+	{{/each}}
+
+	{{#if list.comment }}
+		<span class="panel-diary-admin-display_comment">{{ list.comment }}</span>
+	{{/if}}
+
+{{/if}}

@@ -1,0 +1,29 @@
+{{#if editing }}
+	
+	<span class="main-title">{{ editableCustomApi.name }}</span>
+
+	<div class="main-editable-input_editable">
+
+		{{ yield }}
+
+		<div class="main-editable-custom_buttons">
+		  <button {{ action "save" bubbles=false }}> {{#if loading }} <svg class="svg_loader"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_loader"></use></svg> {{else}} <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_ok"></use></svg> {{/if}} </button>
+		  <button {{ action "cancel" bubbles=false }}><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></button>
+		</div>
+
+	</div>
+
+{{else}}
+	
+	<span class="main-title">{{ editableCustomApi.name }}</span>
+
+	<div class="main-editable-input_display">
+		{{#if editableCustomApi.value }}
+			{{ editableCustomApi.value }}
+		{{else}}
+			<i>Wprowadź</i>
+		{{/if}}
+		<svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_edit"></use></svg>
+	</div>
+
+{{/if}}

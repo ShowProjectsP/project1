@@ -1,0 +1,84 @@
+<div class="page-panel_diagnosis page-panel_groups">
+
+	{{ main-panel-header
+	  topText="Grupy"
+	}}
+
+
+	<div class="page-panel_inner {{if model.groups.isLoading "a-container-loading" }}">
+
+		{{#if newGroupMode }}
+
+			<div class="page-panel_groups_new-group">
+
+				<div class="page-panel_groups_new-group_part">
+					<span>Nowa grupa</span>
+					{{ input classNames="input" value=groupName placeholder="Nazwa grupy" autofocus="autofocus" }}
+					{{ ui-select-menu selectMenuApi=trainersSelectApi }}
+					{{ ui-select-menu selectMenuApi=languageSelectApi }}
+					{{ ui-select-menu selectMenuApi=studentsSelectApi selectOutside=true onLoadMore=( action "loadMoreStudents") }}
+					<div class="page-panel_groups_new-group_part_buttons">
+						<button class="button button-wide button-filled color-bg_orange {{if newGroupLoading "a-button-loading" }}" disabled={{ h-not createButtonEnabled }} {{ action "createGroup" }}>Dodaj</button>
+						<button class="button button-wide button-filled-reversed color_text_orange" {{ action "closeNewGroupMode" }}>Wyjdź</button>
+					</div>
+				</div>
+
+				<div class="page-panel_groups_new-group_part">
+					<div class="page-panel_groups_selected-students {{if studentsSelectApi.selected.length "page-panel_groups_selected-students--selected" }}">
+						{{#if studentsSelectApi.selected.length }}
+							{{#each studentsSelectApi.selected as |student| }}
+								<div>
+									{{ student.displayValue }}
+									<svg class="svg_cancel" {{ action "removeStudent" student }}><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg>
+								</div>
+							{{/each}}
+
+							<b>{{ studentsSelectApi.selected.length }}</b>
+						{{ else }}
+							<i>Kursanci...</i>
+						{{/if}}
+					</div>
+				</div>
+
+			</div>
+
+		{{ else }}
+
+			<div class="main-panel-list-element" {{ action "toggleNewGroupMode" }}>
+				Dodaj grupę
+				<svg class="svg_plus"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_plus"></use></svg>
+			</div>
+		
+		{{/if}}
+
+
+		{{#if model.groups.collection.length }}
+
+			<span class="main-title">Grupy</span>
+
+			{{#each model.groups.collection as |group| }}
+
+		  	{{#link-to "app.panel.group" group.id classNames="main-panel-list-element" }}
+		    	<span>{{ group.name }}</span>
+		    	<span><svg {{ action "deleteGroup" group bubbles=false }}><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg_cancel"></use></svg></span>
+		  	{{/link-to }}
+
+			{{/each}}
+
+		{{/if}}
+
+	</div>
+
+
+	{{#if model.groups.collection.length }}
+
+	  {{ panel-pagination
+	    pagesCount=model.groups.pagesCount
+	    currentPage=model.groups.page
+	    route="app.panel.groups"
+	  }}
+
+	{{/if}}
+
+
+</div>

@@ -1,0 +1,11 @@
+.panel-diary-admin-display {
+	padding: 15px;
+
+	.panel-diary-admin-display_comment {
+		display: inline-block;
+		margin-top: 10px;
+    padding: 0 0 7px 0;
+		font-style: italic;
+		border-bottom: 1px solid $color-border-1;
+	}
+}
